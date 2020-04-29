@@ -66,11 +66,12 @@ body {
 .card-wrapper {
   font-family: Roboto;
   font-weight: 100;
-  font-size: 12px;
+  font-size: 13px;
   color: #fff;
   margin-top: 70px;
   text-align: center;
   display: block;
+  cursor: pointer;
 }
 
 .text-container p {
@@ -80,7 +81,7 @@ body {
 
 /* iPhone X 375px */
 @media only screen and (max-width: 375px) {
-  .a-tag-img-div img {
+  .card-wrapper img {
     width: 65px;
   }
   .nav-title {
@@ -88,8 +89,29 @@ body {
   }
 }
 
+/* 360 Pixels */
+@media only screen and (max-width: 360px) {
+  .nav-title {
+    margin-left: 32%;
+  }
+}
+
 /* 320 Pixels */
 @media only screen and (max-width: 320px) {
-  .a-tag-img-div img {
+  .nav-title {
+    margin-left: 32%;
+  }
+  .card-wrapper img {
+    width: 70px;
+  }
+}
+
+/* 411 Pixels */
+@media only screen and (max-width: 411px) {
+  .nav-title {
+    margin-left: 35%;
+  }
+  .card-wrapper img {
+    width: 70px;
   }
 }
