@@ -61,7 +61,7 @@ body {
 }
 
 .a-tag-img-div {
-  width: auto;
+  align-items: center;
 }
 
 .a-tag-img-div img {
