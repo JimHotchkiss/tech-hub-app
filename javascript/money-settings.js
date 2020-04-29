@@ -56,9 +56,14 @@ const iconButtons = () => {
     // put imgElement in anchor tag
     cardAnchor.appendChild(imgElement);
     // put cardAnchor into a tag img div
-    aTagImgDiv.appendChild(cardAnchor);
+
+    cardClassDiv.appendChild(cardAnchor);
+
+    // cardClassDiv.appendChild(aTagImgDiv);
+    // aTagImgDiv.appendChild(cardAnchor);
+
     // put a tag img div into cardclassdiv
-    cardClassDiv.appendChild(aTagImgDiv);
+    // cardClassDiv.appendChild(aTagImgDiv);
     // put cardClassDiv into topCardDiv
     topCardDiv.appendChild(cardClassDiv);
     // create text p tag
@@ -71,9 +76,12 @@ const iconButtons = () => {
     // insert p tag into textContainer
     textContainer.appendChild(pTag);
     // insert textContainer in cardClassDiv
-    cardClassDiv.appendChild(textContainer);
+
+    // cardClassDiv.appendChild(textContainer);
+
+    topCardDiv.appendChild(textContainer);
     // insert cardClassDiv into topCardDiv
-    topCardDiv.appendChild(cardClassDiv);
+    // topCardDiv.appendChild(cardClassDiv);
   });
 };
 // const cardDiv = document.getElementById('card-div')
