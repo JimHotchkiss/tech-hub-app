@@ -72,10 +72,6 @@ img {
   margin-top: 6px;
 }
 
-.container {
-  padding: 2px 16px;
-}
-
 /* iPhone X 375px */
 @media only screen and (max-width: 375px) {
   .card-wrapper {
