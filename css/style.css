@@ -60,12 +60,7 @@ body {
   margin-top: 8%;
 }
 
-.a-tag-img-div {
-  align-items: center;
-}
-
-.a-tag-img-div img {
-  margin: 0 auto;
+img {
   width: 75px;
 }
 
@@ -73,25 +68,13 @@ body {
   font-family: Roboto;
   font-weight: 100;
   font-size: 12px;
-  text-align: center;
   color: #fff;
   margin-top: 6px;
 }
 
 .container {
   padding: 2px 16px;
-  flex-wrap: wrap;
 }
-
-/* Media Query */
-
-/* G4 Andrioid 360 */
-
-/* @media only screen and (max-width: 360px) {
-  .a-tag-img-div img {
-    width: 50px;
-  }
-} */
 
 /* iPhone X 375px */
 @media only screen and (max-width: 375px) {

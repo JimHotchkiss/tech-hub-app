@@ -79,7 +79,8 @@ const iconButtons = () => {
 
     // cardClassDiv.appendChild(textContainer);
 
-    topCardDiv.appendChild(textContainer);
+    cardClassDiv.appendChild(textContainer);
+    topCardDiv.appendChild(cardClassDiv);
     // insert cardClassDiv into topCardDiv
     // topCardDiv.appendChild(cardClassDiv);
   });
