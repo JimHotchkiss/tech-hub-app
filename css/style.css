@@ -52,46 +52,55 @@ body {
 }
 
 /* Card style */
-.tile-wrapper {
+#card-div {
   display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   align-items: baseline;
+  margin-top: 8%;
 }
-.card {
+
+.a-tag-img-div {
+  width: auto;
+}
+
+.a-tag-img-div img {
+  margin: 0 auto;
+  width: 75px;
+}
+
+.text-container {
   font-family: Roboto;
   font-weight: 100;
   font-size: 12px;
   text-align: center;
-  margin-top: 50px;
-  width: 50%;
   color: #fff;
-}
-
-.card img {
-  width: 75px;
+  margin-top: 6px;
 }
 
 .container {
   padding: 2px 16px;
+  flex-wrap: wrap;
 }
 
 /* Media Query */
 
-@media only screen and (max-width: 600px) {
-  .tile-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-  }
-  .card {
-    margin: 15 auto;
-    margin-top: 50px;
-  }
-}
+/* G4 Andrioid 360 */
 
-/* 414 Pixels */
-@media only screen and (max-width: 414px) {
-  .card img {
-    width: 70px;
+/* @media only screen and (max-width: 360px) {
+  .a-tag-img-div img {
+    width: 50px;
+  }
+} */
+
+/* iPhone X 375px */
+@media only screen and (max-width: 375px) {
+  .card-wrapper {
+    margin: 16px;
+  }
+
+  .a-tag-img-div img {
+    width: 65px;
   }
   .nav-title {
     margin-left: 37%;
@@ -100,7 +109,7 @@ body {
 
 /* 320 Pixels */
 @media only screen and (max-width: 320px) {
-  .card img {
-    width: 60px;
+  .a-tag-img-div img {
+    /* width: 60px; */
   }
 }
