@@ -64,13 +64,21 @@ img {
   width: 75px;
 }
 
-.text-container {
+.card-wrapper p {
   font-family: Roboto;
   font-weight: 100;
   font-size: 12px;
   color: #fff;
   margin-top: 6px;
 }
+
+/* .text-container {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 6px;
+} */
 
 /* iPhone X 375px */
 @media only screen and (max-width: 375px) {
