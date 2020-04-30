@@ -7,19 +7,19 @@ body {
   background-color: #262626;
 }
 
-.nav {
+#nav {
   display: flex;
   height: 75px;
   width: 100%;
   border-bottom: 3px solid #ffb600;
 }
 
-.nav-title {
+#nav-title {
   margin-top: 30px;
-  margin-left: 43%;
+  margin-left: 38%;
 }
 
-.nav-title h3 {
+#nav-title h3 {
   font-family: Roboto;
   font-size: 24px;
   color: #fff;
@@ -29,7 +29,7 @@ body {
   color: #ffb600;
 }
 
-.menu-icon {
+#menu-icon {
   position: absolute;
   top: 28px;
   right: 30px;
@@ -51,6 +51,19 @@ body {
   margin-top: 6px;
 }
 
+/* Icon */
+.feature-icon-nav {
+  width: 40px;
+  height: 40px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.feature-icon-nav img {
+  width: 33px;
+}
+
+/* Show feature NavBar */
+
 /* Card style */
 #card-div {
   display: flex;
@@ -60,7 +73,7 @@ body {
 }
 
 .card-wrapper img {
-  width: 75px;
+  width: 30px;
 }
 
 .card-wrapper {
