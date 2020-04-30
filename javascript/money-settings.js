@@ -37,12 +37,12 @@ const iconData = [
 
 const iconButtons = () => {
   iconData.map((item, index) => {
-    console.log(index);
     const topCardDiv = document.getElementById("card-div");
     const cardClassDiv = document.createElement("div");
     cardClassDiv.setAttribute("class", "card-wrapper");
     cardClassDiv.setAttribute("dataset-console", item.data);
     cardClassDiv.addEventListener("click", (event) => {
+      console.log(event, "45");
       showFeature(event);
     });
     const aTagImgDiv = document.createElement("div");
@@ -52,7 +52,8 @@ const iconButtons = () => {
     imgElement.setAttribute("class", "img-element");
     imgElement.setAttribute("alt", "icon");
     const cardAnchor = document.createElement("a");
-    // cardAnchor.setAttribute("data-console", item.data);
+    cardAnchor.setAttribute("data-console", item.data);
+    cardAnchor.setAttribute("class", "icon-anchor");
     cardAnchor.appendChild(imgElement);
     cardClassDiv.appendChild(cardAnchor);
     topCardDiv.appendChild(cardClassDiv);
@@ -67,19 +68,31 @@ const iconButtons = () => {
 };
 
 const showFeature = (event) => {
-  event.path.map((item) => {
-    if (item.src !== undefined) {
-      const titleDiv = document.getElementById("nav-title");
-      console.log(item);
-      titleDiv.id = "title-no-show";
-      // const titleDiv = document.getElementsByClassName("nav-title");
-      // titleDiv.className = "nav-title-feature";
-      // const featureIconDiv = document.createElement("div");
-      // featureIconDiv.setAttribute("class", "feature-icon-nav");
-      // const iconImgElement = document.createElement("img");
-      // iconImgElement.setAttribute("src", item.src);
-      // featureIconDiv.appendChild(iconImgElement);
-      // navBar.prepend(featureIconDiv);
-    }
-  });
+  const iconAnchor = document.getElementsByClassName("icon-anchor");
+  console.log(iconAnchor);
+  for (item of iconAnchor) {
+    console.log(item);
+  }
+  const navDiv = document.getElementById("nav");
+  const featureDiv = document.getElementById("feature-nav-div");
+  const iconImageDiv = document.createElement("div");
+  const featureBodyDiv = document.getElementById("feature-body-div");
+  const cardDiv = document.getElementById("card-div");
+  iconImageDiv.setAttribute("class", "nav-feature-image-div");
+  const imgElement = document.getElementById("feature-nav-img");
+  imgElement.src = event.target.attributes.src.value;
+  // imgElement.setAttribute("src", event.target.attributes.src.value);
+  iconImageDiv.appendChild(imgElement);
+  featureDiv.appendChild(iconImageDiv);
+  if (featureDiv.style.display === "none") {
+    featureDiv.style.display = "flex";
+    navDiv.style.display = "none";
+    featureBodyDiv.style.display = "flex";
+    cardDiv.style.display = "none";
+  } else {
+    featureDiv.style.display = "none";
+    navDiv.style.display = "flex";
+    featureBodyDiv.style.display = "none";
+    cardDiv.style.display = "flex";
+  }
 };

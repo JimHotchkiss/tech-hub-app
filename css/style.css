@@ -51,8 +51,23 @@ body {
   margin-top: 6px;
 }
 
+#feature-nav-div {
+  height: 75px;
+  width: 100%;
+  border-bottom: 3px solid #ffb600;
+}
+
+#feature-nav-img {
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.nav-feature-image-div img {
+  width: 30px;
+}
+
 /* Icon */
-.feature-icon-nav {
+/* .feature-icon-nav {
   width: 40px;
   height: 40px;
   margin-top: 30px;
@@ -60,7 +75,7 @@ body {
 }
 .feature-icon-nav img {
   width: 33px;
-}
+} */
 
 /* Show feature NavBar */
 
