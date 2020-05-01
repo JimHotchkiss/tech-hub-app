@@ -106,7 +106,6 @@ body {
   color: #fff;
   margin-top: 70px;
   text-align: center;
-  /* display: block; */
 }
 
 .card-wrapper img {
@@ -141,7 +140,7 @@ body {
     margin-left: 32%;
   }
   .card-wrapper img {
-    width: 70px;
+    width: 65px;
   }
 }
 
@@ -151,6 +150,16 @@ body {
     margin-left: 35%;
   }
   .card-wrapper img {
-    width: 70px;
+    width: 65px;
+  }
+}
+
+/* iPhone 6/7 414px*/
+@media only screen and (max-width: 414px) {
+  .nav-title {
+    margin-left: 32%;
+  }
+  .card-wrapper img {
+    width: 65px;
   }
 }

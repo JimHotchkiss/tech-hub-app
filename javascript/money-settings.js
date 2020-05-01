@@ -2,6 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
   iconButtons();
 });
 
+// Constants
+const navDiv = document.getElementById("nav");
+const featureDiv = document.getElementById("feature-nav-div");
+const featureBodyDiv = document.getElementById("feature-body-div");
+const cardDiv = document.getElementById("card-div");
+
 const iconData = [
   {
     data: "msa",
@@ -16,7 +22,7 @@ const iconData = [
   {
     data: "color-adjustments",
     src: "/img/adjustment.png",
-    name: "Color Adjustment",
+    name: "Color Adjustments",
   },
   {
     data: "ipad",
@@ -32,6 +38,11 @@ const iconData = [
     data: "reprocessing",
     src: "/img/reprocessing.png",
     name: "Reprocessing",
+  },
+  {
+    data: "dhr request",
+    src: "/img/dhr.png",
+    name: "DHR Request",
   },
 ];
 
@@ -69,36 +80,20 @@ const iconButtons = () => {
 const navBarFeature = (event) => {
   console.log(event.currentTarget);
   const text = event.currentTarget.textContent;
-  const navDiv = document.getElementById("nav");
-  const featureDiv = document.getElementById("feature-nav-div");
-  const featureBodyDiv = document.getElementById("feature-body-div");
-  const cardDiv = document.getElementById("card-div");
   const featureImg = document.getElementById("feature-nav-img");
   featureImg.src = event.target.attributes.src.value;
   const textPTag = document.getElementById("nav-feature-text-element");
   textPTag.innerHTML = text;
-
-  if (featureDiv.style.display === "none") {
-    featureDiv.style.display = "flex";
-    navDiv.style.display = "none";
-    featureBodyDiv.style.display = "flex";
-    cardDiv.style.display = "none";
-  } else {
-    featureDiv.style.display = "none";
-    navDiv.style.display = "flex";
-    featureBodyDiv.style.display = "none";
-    cardDiv.style.display = "flex";
-  }
+  navHomeToggle();
 };
 
 const navigateHome = () => {
   const textPTag = document.getElementById("nav-feature-text-element");
   textPTag.innerHTML = "";
-  const featureDiv = document.getElementById("feature-nav-div");
-  const navDiv = document.getElementById("nav");
-  const featureBodyDiv = document.getElementById("feature-body-div");
-  const cardDiv = document.getElementById("card-div");
+  navHomeToggle();
+};
 
+const navHomeToggle = () => {
   if (featureDiv.style.display === "none") {
     featureDiv.style.display = "flex";
     navDiv.style.display = "none";
