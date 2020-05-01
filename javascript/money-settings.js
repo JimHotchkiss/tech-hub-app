@@ -15,6 +15,16 @@ const iconData = [
     name: "Money Settings",
   },
   {
+    data: "dhr request",
+    src: "/img/dhr.png",
+    name: "DHR Request",
+  },
+  {
+    data: "tech-spec",
+    src: "/img/ifu.png",
+    name: "Tech Specs",
+  },
+  {
     data: "networking",
     src: "/img/networking2.png",
     name: "Networking",
@@ -30,19 +40,9 @@ const iconData = [
     name: "iPad Assistance",
   },
   {
-    data: "tech-spec",
-    src: "/img/ifu.png",
-    name: "Tech Specs",
-  },
-  {
     data: "reprocessing",
     src: "/img/reprocessing.png",
     name: "Reprocessing",
-  },
-  {
-    data: "dhr request",
-    src: "/img/dhr.png",
-    name: "DHR Request",
   },
 ];
 
@@ -78,10 +78,15 @@ const iconButtons = () => {
 };
 
 const navBarFeature = (event) => {
-  console.log(event.currentTarget);
   const text = event.currentTarget.textContent;
   const featureImg = document.getElementById("feature-nav-img");
-  featureImg.src = event.target.attributes.src.value;
+  if (event.target.attributes.src) {
+    featureImg.src = event.target.attributes.src.value;
+  } else {
+    featureImg.src = event.target.parentNode.parentNode.childNodes[0].childNodes[0].getAttribute(
+      "src"
+    );
+  }
   const textPTag = document.getElementById("nav-feature-text-element");
   textPTag.innerHTML = text;
   navHomeToggle();
