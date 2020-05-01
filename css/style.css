@@ -58,26 +58,34 @@ body {
 }
 
 #feature-nav-img {
+  width: 30px;
+}
+
+.nav-feature-img-div {
   margin-top: 30px;
   margin-left: 30px;
 }
 
-.nav-feature-image-div img {
+.nav-feature-text-div {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 15px;
+  color: #ffb600;
+  margin-top: 35px;
+  margin-left: 100px;
+  cursor: pointer;
+}
+
+.nav-home-icon-div {
+  position: absolute;
+  top: 28px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.nav-home-icon-element {
   width: 30px;
 }
-
-/* Icon */
-/* .feature-icon-nav {
-  width: 40px;
-  height: 40px;
-  margin-top: 30px;
-  margin-left: 20px;
-}
-.feature-icon-nav img {
-  width: 33px;
-} */
-
-/* Show feature NavBar */
 
 /* Card style */
 #card-div {
@@ -98,7 +106,10 @@ body {
   color: #fff;
   margin-top: 70px;
   text-align: center;
-  display: block;
+  /* display: block; */
+}
+
+.card-wrapper img {
   cursor: pointer;
 }
 

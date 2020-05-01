@@ -42,8 +42,7 @@ const iconButtons = () => {
     cardClassDiv.setAttribute("class", "card-wrapper");
     cardClassDiv.setAttribute("dataset-console", item.data);
     cardClassDiv.addEventListener("click", (event) => {
-      console.log(event, "45");
-      showFeature(event);
+      navBarFeature(event);
     });
     const aTagImgDiv = document.createElement("div");
     aTagImgDiv.setAttribute("class", "icon-div");
@@ -67,23 +66,39 @@ const iconButtons = () => {
   });
 };
 
-const showFeature = (event) => {
-  const iconAnchor = document.getElementsByClassName("icon-anchor");
-  console.log(iconAnchor);
-  for (item of iconAnchor) {
-    console.log(item);
-  }
+const navBarFeature = (event) => {
+  console.log(event.currentTarget);
+  const text = event.currentTarget.textContent;
   const navDiv = document.getElementById("nav");
   const featureDiv = document.getElementById("feature-nav-div");
-  const iconImageDiv = document.createElement("div");
   const featureBodyDiv = document.getElementById("feature-body-div");
   const cardDiv = document.getElementById("card-div");
-  iconImageDiv.setAttribute("class", "nav-feature-image-div");
-  const imgElement = document.getElementById("feature-nav-img");
-  imgElement.src = event.target.attributes.src.value;
-  // imgElement.setAttribute("src", event.target.attributes.src.value);
-  iconImageDiv.appendChild(imgElement);
-  featureDiv.appendChild(iconImageDiv);
+  const featureImg = document.getElementById("feature-nav-img");
+  featureImg.src = event.target.attributes.src.value;
+  const textPTag = document.getElementById("nav-feature-text-element");
+  textPTag.innerHTML = text;
+
+  if (featureDiv.style.display === "none") {
+    featureDiv.style.display = "flex";
+    navDiv.style.display = "none";
+    featureBodyDiv.style.display = "flex";
+    cardDiv.style.display = "none";
+  } else {
+    featureDiv.style.display = "none";
+    navDiv.style.display = "flex";
+    featureBodyDiv.style.display = "none";
+    cardDiv.style.display = "flex";
+  }
+};
+
+const navigateHome = () => {
+  const textPTag = document.getElementById("nav-feature-text-element");
+  textPTag.innerHTML = "";
+  const featureDiv = document.getElementById("feature-nav-div");
+  const navDiv = document.getElementById("nav");
+  const featureBodyDiv = document.getElementById("feature-body-div");
+  const cardDiv = document.getElementById("card-div");
+
   if (featureDiv.style.display === "none") {
     featureDiv.style.display = "flex";
     navDiv.style.display = "none";
