@@ -63,23 +63,23 @@ body {
 
 .nav-feature-img-div {
   margin-top: 30px;
-  margin-left: 30px;
+  margin-left: 16px;
 }
 
 .nav-feature-text-div {
   font-family: Roboto;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 24px;
   color: #ffb600;
-  margin-top: 35px;
-  margin-left: 100px;
+  margin-top: 30px;
+  margin-left: 90px;
   cursor: pointer;
 }
 
 .nav-home-icon-div {
   position: absolute;
   top: 28px;
-  right: 30px;
+  right: 23px;
   cursor: pointer;
 }
 
@@ -118,19 +118,46 @@ body {
 }
 
 /* Feature Page */
-.camera-div {
-  height: 75px;
+
+#msa-feature-div {
   width: 100%;
+}
+
+.msa-title-div {
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
+.msa-title-div p {
+  padding-bottom: 16px;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 24px;
+  color: #fff;
+}
+
+.camera-ul {
+  list-style-type: none;
+}
+.camera-div {
+  display: flex;
+  margin: 16px 0px;
   border-bottom: 1px solid #ffb600;
   cursor: pointer;
 }
 
-.camera-div p {
+.camera-div li {
+  padding-bottom: 16px;
+  padding-left: 16px;
   font-family: Roboto;
   font-weight: 100;
-  font-size: 13px;
+  font-size: 14px;
   color: #fff;
-  margin-top: 55px;
+}
+
+.arrow-icon-div {
+  position: absolute;
+  margin-left: 88%;
 }
 
 /* iPhone X 375px */
@@ -173,7 +200,7 @@ body {
 /* iPhone 6/7 414px*/
 @media only screen and (max-width: 414px) {
   .nav-title {
-    margin-left: 32%;
+    margin-left: 40%;
   }
   .card-wrapper img {
     width: 65px;

@@ -4,10 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Constants
 const navDiv = document.getElementById("nav");
-const featureDiv = document.getElementById("feature-nav-div");
+const featureNavDiv = document.getElementById("feature-nav-div");
 const featureBodyDiv = document.getElementById("feature-body-div");
 const cardDiv = document.getElementById("card-div");
 const msaFeatureDiv = document.getElementsByClassName("msa-feature-div");
+const camerasDiv = document.getElementById("msa-feature-div");
 
 const iconData = [
   {
@@ -123,59 +124,30 @@ const navigateHome = (event) => {
 };
 
 const navHomeToggle = (event) => {
-  if (featureDiv.style.display === "none") {
-    featureDiv.style.display = "flex";
+  if (featureNavDiv.style.display === "none") {
+    featureNavDiv.style.display = "flex";
     navDiv.style.display = "none";
     featureBodyDiv.style.display = "flex";
     cardDiv.style.display = "none";
-    identifyFeature(event);
+    toggleFeature(event);
   } else {
-    featureDiv.style.display = "none";
+    featureNavDiv.style.display = "none";
     navDiv.style.display = "flex";
     featureBodyDiv.style.display = "none";
     cardDiv.style.display = "flex";
   }
 };
 
-const identifyFeature = (event) => {
+const toggleFeature = (event) => {
+  const camerasDiv = document.getElementById("msa-feature-div");
   const currentFeature = event.currentTarget.childNodes[0].dataset.feature;
   if (currentFeature === "msa") {
-    showCurrentFeature(event);
+    camerasDiv.style.display = "flex";
+    camerasDiv.style.flexDirection = "column";
   } else {
+    console.log(currentFeature);
     const msa = document.getElementsByClassName("msa-feature-div");
-    msa[0].style.display = "none";
-  }
-};
-
-showCurrentFeature = (event) => {
-  if (msaFeatureDiv.length === 0) {
-    const camerasDiv = document.createElement("div");
-    const cameraUList = document.createElement("ul");
-    cameraUList.setAttribute("class", "camera-ul");
-    camerasDiv.setAttribute("class", "msa-feature-div");
-    camerasDiv.style.display = "block";
-    // Map through cameras
-    cameras.map((camera) => {
-      const cameraDiv = document.createElement("div");
-      cameraDiv.setAttribute("class", "camera-div");
-      cameraDiv.addEventListener("click", (event) => {
-        showDisplays(event);
-      });
-      const cameraLiTag = document.createElement("li");
-      cameraLiTag.setAttribute("class", "camera-li");
-      const cameraPTag = document.createElement("p");
-      cameraPTag.setAttribute("class", "camera-p-tag");
-      cameraPTag.setAttribute("data-camera", camera.data);
-      cameraPTag.innerHTML = `${camera.name}`;
-      cameraDiv.appendChild(cameraPTag);
-      cameraLiTag.appendChild(cameraDiv);
-      cameraUList.appendChild(cameraLiTag);
-      camerasDiv.appendChild(cameraUList);
-      featureBodyDiv.appendChild(camerasDiv);
-    });
-  } else {
-    const msa = document.getElementsByClassName("msa-feature-div");
-    msa[0].style.display = "block";
+    camerasDiv.style.display = "none";
   }
 };
 
