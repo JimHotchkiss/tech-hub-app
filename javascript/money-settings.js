@@ -7,6 +7,7 @@ const navDiv = document.getElementById("nav");
 const featureDiv = document.getElementById("feature-nav-div");
 const featureBodyDiv = document.getElementById("feature-body-div");
 const cardDiv = document.getElementById("card-div");
+const msaFeatureDiv = document.getElementsByClassName("msa-feature-div");
 
 const iconData = [
   {
@@ -43,6 +44,29 @@ const iconData = [
     data: "ipad",
     src: "/img/ipad.png",
     name: "iPad Assistance",
+  },
+];
+
+const cameras = [
+  {
+    data: "1688",
+    name: "1688",
+  },
+  {
+    data: "1588",
+    name: "1588",
+  },
+  {
+    data: "1488",
+    name: "1488",
+  },
+  {
+    data: "Precision AC",
+    name: "Precision AC",
+  },
+  {
+    data: "1288",
+    name: "1288",
   },
 ];
 
@@ -117,9 +141,44 @@ const identifyFeature = (event) => {
   const currentFeature = event.currentTarget.childNodes[0].dataset.feature;
   if (currentFeature === "msa") {
     showCurrentFeature(event);
+  } else {
+    const msa = document.getElementsByClassName("msa-feature-div");
+    msa[0].style.display = "none";
   }
 };
 
 showCurrentFeature = (event) => {
-  alert("sup?");
+  if (msaFeatureDiv.length === 0) {
+    const camerasDiv = document.createElement("div");
+    const cameraUList = document.createElement("ul");
+    cameraUList.setAttribute("class", "camera-ul");
+    camerasDiv.setAttribute("class", "msa-feature-div");
+    camerasDiv.style.display = "block";
+    // Map through cameras
+    cameras.map((camera) => {
+      const cameraDiv = document.createElement("div");
+      cameraDiv.setAttribute("class", "camera-div");
+      cameraDiv.addEventListener("click", (event) => {
+        showDisplays(event);
+      });
+      const cameraLiTag = document.createElement("li");
+      cameraLiTag.setAttribute("class", "camera-li");
+      const cameraPTag = document.createElement("p");
+      cameraPTag.setAttribute("class", "camera-p-tag");
+      cameraPTag.setAttribute("data-camera", camera.data);
+      cameraPTag.innerHTML = `${camera.name}`;
+      cameraDiv.appendChild(cameraPTag);
+      cameraLiTag.appendChild(cameraDiv);
+      cameraUList.appendChild(cameraLiTag);
+      camerasDiv.appendChild(cameraUList);
+      featureBodyDiv.appendChild(camerasDiv);
+    });
+  } else {
+    const msa = document.getElementsByClassName("msa-feature-div");
+    msa[0].style.display = "block";
+  }
+};
+
+const showDisplays = (event) => {
+  console.log("show camera");
 };

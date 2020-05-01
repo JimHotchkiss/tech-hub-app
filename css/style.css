@@ -117,6 +117,22 @@ body {
   margin-top: 6px;
 }
 
+/* Feature Page */
+.camera-div {
+  height: 75px;
+  width: 100%;
+  border-bottom: 1px solid #ffb600;
+  cursor: pointer;
+}
+
+.camera-div p {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 13px;
+  color: #fff;
+  margin-top: 55px;
+}
+
 /* iPhone X 375px */
 @media only screen and (max-width: 375px) {
   .card-wrapper img {
