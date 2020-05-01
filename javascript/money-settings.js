@@ -15,6 +15,11 @@ const iconData = [
     name: "Money Settings",
   },
   {
+    data: "reprocessing",
+    src: "/img/reprocessing.png",
+    name: "Reprocessing",
+  },
+  {
     data: "dhr request",
     src: "/img/dhr.png",
     name: "DHR Request",
@@ -39,11 +44,6 @@ const iconData = [
     src: "/img/ipad.png",
     name: "iPad Assistance",
   },
-  {
-    data: "reprocessing",
-    src: "/img/reprocessing.png",
-    name: "Reprocessing",
-  },
 ];
 
 const iconButtons = () => {
@@ -51,7 +51,7 @@ const iconButtons = () => {
     const topCardDiv = document.getElementById("card-div");
     const cardClassDiv = document.createElement("div");
     cardClassDiv.setAttribute("class", "card-wrapper");
-    cardClassDiv.setAttribute("dataset-console", item.data);
+    cardClassDiv.setAttribute("dataset-feature", item.data);
     cardClassDiv.addEventListener("click", (event) => {
       navBarFeature(event);
     });
@@ -62,7 +62,7 @@ const iconButtons = () => {
     imgElement.setAttribute("class", "img-element");
     imgElement.setAttribute("alt", "icon");
     const cardAnchor = document.createElement("a");
-    cardAnchor.setAttribute("data-console", item.data);
+    cardAnchor.setAttribute("data-feature", item.data);
     cardAnchor.setAttribute("class", "icon-anchor");
     cardAnchor.appendChild(imgElement);
     cardClassDiv.appendChild(cardAnchor);
@@ -89,25 +89,37 @@ const navBarFeature = (event) => {
   }
   const textPTag = document.getElementById("nav-feature-text-element");
   textPTag.innerHTML = text;
-  navHomeToggle();
+  navHomeToggle(event);
 };
 
-const navigateHome = () => {
+const navigateHome = (event) => {
   const textPTag = document.getElementById("nav-feature-text-element");
   textPTag.innerHTML = "";
-  navHomeToggle();
+  navHomeToggle(event);
 };
 
-const navHomeToggle = () => {
+const navHomeToggle = (event) => {
   if (featureDiv.style.display === "none") {
     featureDiv.style.display = "flex";
     navDiv.style.display = "none";
     featureBodyDiv.style.display = "flex";
     cardDiv.style.display = "none";
+    identifyFeature(event);
   } else {
     featureDiv.style.display = "none";
     navDiv.style.display = "flex";
     featureBodyDiv.style.display = "none";
     cardDiv.style.display = "flex";
   }
+};
+
+const identifyFeature = (event) => {
+  const currentFeature = event.currentTarget.childNodes[0].dataset.feature;
+  if (currentFeature === "msa") {
+    showCurrentFeature(event);
+  }
+};
+
+showCurrentFeature = (event) => {
+  alert("sup?");
 };
