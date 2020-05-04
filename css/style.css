@@ -140,21 +140,22 @@ body {
   list-style-type: none;
 }
 
-.camera-window-wrapper:after {
+.camera-li-arrow-div {
+  display: flex;
+}
+
+.camera-div {
   content: "";
   display: block;
   width: 93%;
   border-bottom: 1px solid #ffb600;
   cursor: pointer;
 }
-.camera-div {
-  display: flex;
-}
 
 .camera-div li {
   padding-left: 16px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-family: Roboto;
   font-weight: 100;
   font-size: 14px;
@@ -163,35 +164,14 @@ body {
 
 .arrow-icon-div {
   position: absolute;
-  margin-top: 14px;
+  margin-top: 18px;
   margin-left: 88%;
 }
 
-/* Displays styling */
-
-#sixteen-display-wrapper {
-  max-height: 0;
-  overflow-y: hidden;
-  transition: all 0.3s ease-in-out;
+.displays-div {
+  margin-top: 18px;
 }
 
-#sixteen-display-wrapper-open {
-  max-height: 1000px;
-  margin-top: 10px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-}
-
-.display-wrapper {
-  max-height: 0;
-  overflow-y: hidden;
-  transition: all 0.3s ease-in-out;
-}
-.displays-div.open {
-  margin-top: 10px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-}
 .display-title {
   padding-bottom: 16px;
   font-family: Roboto;
@@ -203,7 +183,12 @@ body {
   list-style-type: none;
 }
 
+.display-wrapper {
+  margin-left: 18px;
+}
+
 .display-div {
+  margin-top: 18px;
   font-family: Roboto;
   font-weight: 100;
   font-size: 14px;
