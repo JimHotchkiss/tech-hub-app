@@ -163,12 +163,5 @@ const addingEventListener = () => {
 };
 
 const showDisplays = (event) => {
-  const selectedCamera = event.currentTarget.dataset.camera;
-  console.log(event.currentTarget.dataset.camera);
-  const showDisplayDiv = document.getElementById(selectedCamera);
-  if (showDisplayDiv.id === "sixteen-display-wrapper") {
-    showDisplayDiv.id = "sixteen-display-wrapper" + "-open";
-  } else {
-    return (showDisplayDiv.id = "sixteen-display-wrapper");
-  }
+  console.log(event.currentTarget);
 };
