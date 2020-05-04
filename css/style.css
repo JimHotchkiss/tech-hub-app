@@ -124,12 +124,12 @@ body {
 }
 
 .msa-title-div {
-  margin-top: 16px;
+  margin-top: 30px;
   margin-left: 16px;
 }
 
 .msa-title-div p {
-  padding-bottom: 16px;
+  padding-bottom: 12px;
   font-family: Roboto;
   font-weight: 600;
   font-size: 24px;
@@ -168,6 +168,19 @@ body {
 }
 
 /* Displays styling */
+
+#sixteen-display-wrapper {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+#sixteen-display-wrapper-open {
+  max-height: 1000px;
+  margin-top: 10px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+}
 
 .display-wrapper {
   max-height: 0;

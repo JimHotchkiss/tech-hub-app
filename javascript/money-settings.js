@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   iconButtons();
+  addingEventListener();
 });
 
 // Constants
@@ -151,6 +152,23 @@ const toggleFeature = (event) => {
   }
 };
 
+const addingEventListener = () => {
+  cameraDiv = document.getElementsByClassName("camera-div");
+  arrayForm = Array.from(cameraDiv);
+  arrayForm.map((camera) => {
+    camera.addEventListener("click", () => {
+      showDisplays(event);
+    });
+  });
+};
+
 const showDisplays = (event) => {
-  console.log("show camera");
+  const selectedCamera = event.currentTarget.dataset.camera;
+  console.log(event.currentTarget.dataset.camera);
+  const showDisplayDiv = document.getElementById(selectedCamera);
+  if (showDisplayDiv.id === "sixteen-display-wrapper") {
+    showDisplayDiv.id = "sixteen-display-wrapper" + "-open";
+  } else {
+    return (showDisplayDiv.id = "sixteen-display-wrapper");
+  }
 };
