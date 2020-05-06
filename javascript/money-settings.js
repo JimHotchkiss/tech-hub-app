@@ -11,6 +11,12 @@ const cardDiv = document.getElementById("card-div");
 const msaFeatureDiv = document.getElementsByClassName("msa-feature-div");
 const camerasDiv = document.getElementById("msa-feature-div");
 
+const state = {
+  camera: "",
+  display: "",
+  specialty: "",
+  clicked: false,
+};
 const iconData = [
   {
     data: "msa",
@@ -53,22 +59,27 @@ const cameras = [
   {
     data: "1688",
     name: "1688",
+    clicked: false,
   },
   {
     data: "1588",
     name: "1588",
+    clicked: false,
   },
   {
     data: "1488",
     name: "1488",
+    clicked: false,
   },
   {
     data: "Precision AC",
     name: "Precision AC",
+    clicked: false,
   },
   {
     data: "1288",
     name: "1288",
+    clicked: false,
   },
 ];
 
@@ -146,8 +157,6 @@ const toggleFeature = (event) => {
     camerasDiv.style.display = "flex";
     camerasDiv.style.flexDirection = "column";
   } else {
-    console.log(currentFeature);
-    const msa = document.getElementsByClassName("msa-feature-div");
     camerasDiv.style.display = "none";
   }
 };
@@ -157,11 +166,43 @@ const addingEventListener = () => {
   arrayForm = Array.from(cameraDiv);
   arrayForm.map((camera) => {
     camera.addEventListener("click", () => {
-      showDisplays(event);
+      setState(event);
     });
   });
 };
 
-const showDisplays = (event) => {
-  console.log(event.currentTarget);
+const setState = (event) => {
+  const camera = event.currentTarget.dataset.camera;
+  if (state.camera === "") {
+    state.camera = camera;
+    setClicked();
+  } else {
+    state.camera = "";
+    state.camera = camera;
+    setClicked();
+  }
+};
+
+const setClicked = () => {
+  cameras.map((camera) => {
+    if (camera.name === state.camera) {
+      camera.clicked = !camera.clicked;
+    } else {
+      camera.clicked = false;
+    }
+    return camera;
+  });
+  toggleDisplays();
+};
+
+const toggleDisplays = () => {
+  cameras.map((camera) => {
+    if (camera.clicked) {
+      const displays = document.getElementById(camera.name);
+      displays.className = "displays-show";
+    } else {
+      const displays = document.getElementById(camera.name);
+      displays.className = "displays-div";
+    }
+  });
 };

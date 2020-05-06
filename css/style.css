@@ -169,7 +169,24 @@ body {
 }
 
 .displays-div {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.3s ease-in;
+}
+
+.displays-show {
+  max-height: 1000px;
+  transition: all 0.3s ease-out;
   margin-top: 18px;
+}
+
+@keyframes easeIn {
+  from {
+    display: none;
+  }
+  to {
+    display: block;
+  }
 }
 
 .display-title {
