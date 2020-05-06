@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   iconButtons();
-  addingEventListener();
+  addingDisplayEventListener();
+  addingCameraEventListener();
 });
 
 // Constants
@@ -13,7 +14,7 @@ const camerasDiv = document.getElementById("msa-feature-div");
 
 const state = {
   camera: "",
-  display: "",
+  display: { name: "", clicked: false },
   specialty: "",
   clicked: false,
 };
@@ -161,29 +162,55 @@ const toggleFeature = (event) => {
   }
 };
 
-const addingEventListener = () => {
+const addingCameraEventListener = () => {
   cameraDiv = document.getElementsByClassName("camera-div");
   arrayForm = Array.from(cameraDiv);
   arrayForm.map((camera) => {
     camera.addEventListener("click", () => {
-      setState(event);
+      setCameraState(event);
     });
   });
 };
 
-const setState = (event) => {
-  const camera = event.currentTarget.dataset.camera;
-  if (state.camera === "") {
-    state.camera = camera;
-    setClicked();
+const addingDisplayEventListener = () => {
+  displayDiv = document.getElementsByClassName("display-div");
+  arrayForm = Array.from(displayDiv);
+  arrayForm.map((display) => {
+    display.addEventListener("click", () => {
+      setDisplayState(event);
+    });
+  });
+};
+
+const setDisplayState = (event) => {
+  const currentDisplay = event.currentTarget.children[0].innerText;
+  if (state.display.name === "") {
+    state.display.name = currentDisplay;
+    setDisplayClicked();
   } else {
-    state.camera = "";
-    state.camera = camera;
-    setClicked();
+    state.display.name = "";
+    state.display.name = currentDisplay;
+    setDisplayClicked();
   }
 };
 
-const setClicked = () => {
+const setDisplayClicked = () => {
+  console.log("Display Clicked Function", state.display.name, state.camera);
+};
+
+const setCameraState = (event) => {
+  const camera = event.currentTarget.dataset.camera;
+  if (state.camera === "") {
+    state.camera = camera;
+    setClicked(event);
+  } else {
+    state.camera = "";
+    state.camera = camera;
+    setClicked(event);
+  }
+};
+
+const setClicked = (event) => {
   cameras.map((camera) => {
     if (camera.name === state.camera) {
       camera.clicked = !camera.clicked;
@@ -191,10 +218,10 @@ const setClicked = () => {
       camera.clicked = false;
     }
   });
-  toggleDisplays();
+  toggleDisplays(event);
 };
 
-const toggleDisplays = () => {
+const toggleDisplays = (event) => {
   cameras.map((camera) => {
     if (camera.clicked) {
       const displays = document.getElementById(camera.name);
