@@ -190,7 +190,6 @@ const setClicked = () => {
     } else {
       camera.clicked = false;
     }
-    return camera;
   });
   toggleDisplays();
 };
