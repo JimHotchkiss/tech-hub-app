@@ -164,9 +164,30 @@ body {
 
 .arrow-icon-div {
   position: absolute;
-  margin-top: 24px;
+  margin-top: 34px;
   margin-left: 87%;
 }
+
+.arrow-img {
+  content: "";
+  position: absolute;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background: transparent url("../img/arrow.svg") 0% 0% no-repeat padding-box;
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  background-size: 25px;
+
+  transition: all 0.4s ease-out;
+}
+
+/* .arrow-img.clicked {
+  transform: translateY(-50%) rotate(180def);
+} */
 
 .displays-div {
   max-height: 0;
@@ -196,11 +217,12 @@ body {
 }
 
 .display-div {
-  width: 88%;
+  width: 90%;
   height: 30px;
   background: #ffb600;
   border-radius: 5px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .display-div:hover {

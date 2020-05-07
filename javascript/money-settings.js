@@ -13,10 +13,9 @@ const msaFeatureDiv = document.getElementsByClassName("msa-feature-div");
 const camerasDiv = document.getElementById("msa-feature-div");
 
 const state = {
-  camera: "",
+  camera: { name: "", clicked: false },
   display: { name: "", clicked: false },
   specialty: "",
-  clicked: false,
 };
 const iconData = [
   {
@@ -186,39 +185,56 @@ const setDisplayState = (event) => {
   const currentDisplay = event.currentTarget.children[0].innerText;
   if (state.display.name === "") {
     state.display.name = currentDisplay;
-    setDisplayClicked();
+    state.display.clicked = true;
+    showSpecialties();
   } else {
     state.display.name = "";
+    state.display.clicked = false;
     state.display.name = currentDisplay;
-    setDisplayClicked();
+    state.display.clicked = true;
+    showSpecialties();
   }
 };
 
-const setDisplayClicked = () => {
-  console.log("Display Clicked Function", state.display.name, state.camera);
+const showSpecialties = () => {
+  console.log(
+    "display:",
+    state.display.name,
+    "clicked?:",
+    state.display.clicked,
+    "camera:",
+    state.camera
+  );
 };
 
 const setCameraState = (event) => {
   const camera = event.currentTarget.dataset.camera;
-  if (state.camera === "") {
-    state.camera = camera;
+  if (state.camera.name === "") {
+    state.camera.name = camera;
     setClicked(event);
   } else {
-    state.camera = "";
-    state.camera = camera;
+    state.camera.name = "";
+    state.camera.name = camera;
     setClicked(event);
   }
 };
 
 const setClicked = (event) => {
+  const arrow = event.currentTarget.children[0].children[1].children[0];
   cameras.map((camera) => {
-    if (camera.name === state.camera) {
+    console.log(state.camera.name);
+    if (camera.name === state.camera.name) {
       camera.clicked = !camera.clicked;
+      console.log(state.camera.clicked);
     } else {
       camera.clicked = false;
     }
   });
   toggleDisplays(event);
+};
+
+const rotateArrow = () => {
+  // console.log(state.camers);
 };
 
 const toggleDisplays = (event) => {
