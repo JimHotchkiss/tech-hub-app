@@ -225,6 +225,25 @@ body {
   cursor: pointer;
 }
 
+.display-div-button-color {
+  width: 90%;
+  height: 30px;
+  background: #f1f1f1;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.display-div-button-color li {
+  margin-top: 18px;
+  padding-top: 8px;
+  padding-left: 12px;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 14px;
+  color: #262626;
+}
+
 .display-div:hover {
   background: #f1f1f1f1;
   font-weight: 400;

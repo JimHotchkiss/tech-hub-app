@@ -136,6 +136,8 @@ const navigateHome = (event) => {
 };
 
 const navHomeToggle = (event) => {
+  clearMSA();
+  clearButtons();
   if (featureNavDiv.style.display === "none") {
     featureNavDiv.style.display = "flex";
     navDiv.style.display = "none";
@@ -147,6 +149,28 @@ const navHomeToggle = (event) => {
     navDiv.style.display = "flex";
     featureBodyDiv.style.display = "none";
     cardDiv.style.display = "flex";
+  }
+};
+
+const clearMSA = () => {
+  if (state.camera.name !== "") {
+    state.camera.name = "";
+    state.camera.clicked = false;
+    state.display.name = "";
+    state.display.clicked = false;
+    toggleDisplays();
+  }
+};
+
+const clearButtons = () => {
+  const buttonsColored = document.getElementsByClassName(
+    "display-div-button-color"
+  );
+  if (typeof buttonsColored !== "undefined") {
+    arrayForm = Array.from(buttonsColored);
+    arrayForm.map((element) => {
+      element.className = "display-div";
+    });
   }
 };
 
@@ -181,12 +205,65 @@ const addingDisplayEventListener = () => {
   });
 };
 
+const setCameraState = (event) => {
+  const camera = event.currentTarget.dataset.camera;
+  if (state.camera.name === "") {
+    console.log(state.camera.name);
+    state.camera.name = camera;
+    state.camera.clicked = true;
+    console.log("if setCameraState", state.camera.name);
+    toggleDisplays(event);
+  } else if (camera === state.camera.name) {
+    state.camera.name = "";
+    state.camera.clicked = false;
+    clearButtons();
+    toggleDisplays(event);
+  } else {
+    state.camera.name = "";
+    state.camera.name = camera;
+    console.log("else setCamerState", state.camera.name, state.display.name);
+    toggleDisplays(event);
+  }
+};
+
+const toggleDisplays = () => {
+  const camera = state.camera.name;
+  if (camera !== "") {
+    // reseting displays-show back to displays-div
+    const displays = document.getElementsByClassName("displays-show");
+    if (displays.length !== 0) {
+      displays[0].className = "displays-div";
+    }
+
+    const displaysShow = document.getElementById(camera);
+    displaysShow.className = "displays-show";
+  } else {
+    const displays = document.getElementsByClassName("displays-show");
+    console.log("else toggle displays", displays);
+    displays[0].className = "displays-div";
+    state.display.name = "";
+    state.display.clicked = false;
+  }
+};
+
 const setDisplayState = (event) => {
+  displayButtonColor(event);
   const currentDisplay = event.currentTarget.children[0].innerText;
+  const specificDisplay = "display-" + currentDisplay;
+
+  // Now turn all these display buttons color:
+  const specificDisplayButtonsColor = document.getElementsByClassName(
+    specificDisplay
+  );
   if (state.display.name === "") {
     state.display.name = currentDisplay;
     state.display.clicked = true;
     showSpecialties();
+  } else if (currentDisplay === state.display.name) {
+    // displayButtonColor(event);
+    state.display.name = "";
+    state.display.clicked = false;
+    showSpecialties(event);
   } else {
     state.display.name = "";
     state.display.clicked = false;
@@ -194,57 +271,55 @@ const setDisplayState = (event) => {
     state.display.clicked = true;
     showSpecialties();
   }
+  console.log(event.currentTarget);
+  // displayButtonColor(event);
+  // resetButtonColor(event);
+};
+
+// const resetButtonColor = (event) => {
+//   const coloredButtons = document.getElementsByClassName(
+//     "display-div-button-color"
+//   );
+//   console.log("camera:", state.camera.name, "display:", state.display.name);
+//   if (coloredButtons.length !== 0) {
+//     arrayForm = Array.from(coloredButtons);
+//     arrayForm.map((element) => {
+//       element.className = "display-div";
+//     });
+//   }
+//   displayButtonColor(event);
+// };
+
+const displayButtonColor = (event) => {
+  const currentDisplay = event.currentTarget.children[0].innerText;
+  const specificDisplay = "display-" + currentDisplay;
+
+  // Now turn all these display buttons color:
+  const specificDisplayButtonsColor = document.getElementsByClassName(
+    specificDisplay
+  );
+
+  arrayForm = Array.from(specificDisplayButtonsColor);
+  arrayForm.map((element) => {
+    element.className = "display-div-button-color";
+  });
+
+  // const displayButton = event.currentTarget;
+  // console.log(displayButton);
+  // if (state.display.clicked) {
+  //   displayButton.className = "display-div-button-color";
+  // } else {
+  //   displayButton.className = "display-div";
+  // }
 };
 
 const showSpecialties = () => {
-  console.log(
-    "display:",
-    state.display.name,
-    "clicked?:",
-    state.display.clicked,
-    "camera:",
-    state.camera
-  );
-};
-
-const setCameraState = (event) => {
-  const camera = event.currentTarget.dataset.camera;
-  if (state.camera.name === "") {
-    state.camera.name = camera;
-    setClicked(event);
-  } else {
-    state.camera.name = "";
-    state.camera.name = camera;
-    setClicked(event);
-  }
-};
-
-const setClicked = (event) => {
-  const arrow = event.currentTarget.children[0].children[1].children[0];
-  cameras.map((camera) => {
-    console.log(state.camera.name);
-    if (camera.name === state.camera.name) {
-      camera.clicked = !camera.clicked;
-      console.log(state.camera.clicked);
-    } else {
-      camera.clicked = false;
-    }
-  });
-  toggleDisplays(event);
-};
-
-const rotateArrow = () => {
-  // console.log(state.camers);
-};
-
-const toggleDisplays = (event) => {
-  cameras.map((camera) => {
-    if (camera.clicked) {
-      const displays = document.getElementById(camera.name);
-      displays.className = "displays-show";
-    } else {
-      const displays = document.getElementById(camera.name);
-      displays.className = "displays-div";
-    }
-  });
+  // console.log(
+  //   "display:",
+  //   state.display.name,
+  //   "clicked?:",
+  //   state.display.clicked,
+  //   "camera:",
+  //   state.camera
+  // );
 };
