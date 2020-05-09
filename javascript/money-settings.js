@@ -110,6 +110,7 @@ const navigateHome = (event) => {
 const navHomeToggle = (event) => {
   clearMSA();
   clearButtons();
+  closeSpecialties();
   if (featureNavDiv.style.display === "none") {
     featureNavDiv.style.display = "flex";
     navDiv.style.display = "none";
