@@ -259,6 +259,57 @@ body {
   color: #262626;
 }
 
+.specialties-div {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.3s ease-in;
+}
+
+.specialties-show {
+  max-height: 1000px;
+  margin-top: 18px;
+  margin-left: 18px;
+  transition: all 0.3s ease-out;
+}
+
+.specialties-show .specialty-title-tag {
+  padding-bottom: 16px;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 24px;
+  color: #fff;
+}
+
+.specialties-show ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  color: red;
+}
+
+.specialty-div {
+  width: 40%;
+  margin: 12px 35px 3px 0px;
+  height: 30px;
+  background: #ffb600;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.specialty-div li {
+  padding: 6px 12px;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 14px;
+  color: #262626;
+}
+
+.specialty-div:hover {
+  background: #f1f1f1f1;
+  font-weight: 400;
+}
+
 /* iPhone X 375px */
 @media only screen and (max-width: 375px) {
   .card-wrapper img {

@@ -188,6 +188,7 @@ const setCameraState = (event) => {
     state.camera.clicked = false;
     clearButtons();
     toggleDisplays(event);
+    closeSpecialties();
   } else {
     state.camera.name = "";
     state.camera.name = camera;
@@ -216,8 +217,6 @@ const toggleDisplays = () => {
 
 const setDisplayState = (event) => {
   const currentDisplay = event.currentTarget.children[0].innerText;
-
-  console.log(currentDisplay);
 
   if (state.display.name === "") {
     state.display.name = currentDisplay;
@@ -260,6 +259,7 @@ const displayButtonColor = (event) => {
     });
   } else {
     setButtonsColor(event);
+    showSpecialties(event);
   }
 };
 
@@ -279,6 +279,7 @@ const deselectDisplay = (buttons) => {
   buttonsArray = Array.from(buttons);
   buttonsArray.map((button) => {
     button.className = "display-div";
+    closeSpecialties(buttons);
   });
 };
 
@@ -288,4 +289,27 @@ const selectDifferentDisplay = (buttons) => {
     button.className = "display-div";
   });
   setButtonsColor(event);
+};
+
+const showSpecialties = (event) => {
+  const currentDisplay = event.currentTarget.innerText;
+  console.log(currentDisplay);
+  const specialtyDivs = document.getElementsByClassName("specialties-div");
+  console.log(specialtyDivs);
+  if (currentDisplay === "4k") {
+    specialtyDivs[0].className = "specialties-show";
+  } else if (currentDisplay === "VisionPro") {
+    specialtyDivs[1].className = "specialties-show";
+  }
+};
+
+const closeSpecialties = () => {
+  const specialtyDivs = document.getElementsByClassName("specialties-show");
+  console.log(specialtyDivs);
+
+  arraySpecialtiesDiv = Array.from(specialtyDivs);
+  arraySpecialtiesDiv.map((specialty) => {
+    specialty.className = "specialties-div";
+  });
+  specialtyDivs.className = "specialties-div";
 };
