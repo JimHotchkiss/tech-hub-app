@@ -284,13 +284,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
-  color: red;
 }
 
 .specialty-div {
   width: 40%;
   margin: 12px 35px 3px 0px;
-  height: 30px;
+  height: 28px;
   background: #ffb600;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
