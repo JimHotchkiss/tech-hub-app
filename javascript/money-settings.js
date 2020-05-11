@@ -179,13 +179,6 @@ const addingDisplayEventListener = () => {
 };
 
 const setCameraState = (event) => {
-  console.log(
-    event.currentTarget.innerText,
-    "camera:",
-    state.camera,
-    "display",
-    state.display
-  );
   const camera = event.currentTarget.dataset.camera;
   if (state.camera.name === "") {
     state.camera.name = camera;
@@ -201,24 +194,18 @@ const setCameraState = (event) => {
     state.camera.name = "";
     state.camera.name = camera;
     toggleDisplays(event);
+    closeSpecialties(event);
+    showSpecialties(event);
   }
 };
 
 const toggleDisplays = () => {
-  console.log(
-    event.currentTarget.innerText,
-    "camera:",
-    state.camera,
-    "display",
-    state.display
-  );
   const camera = state.camera.name;
   const display = state.display.name;
   if (camera !== "") {
     // reseting displays-show back to displays-div
     const displays = document.getElementsByClassName("displays-show");
     if (camera === "1688" && display === "HDTV Wise") {
-      console.log(camera, display);
       // Close the CCU div
       const displays = document.getElementsByClassName("displays-show");
       displays[0].className = "displays-div";
@@ -232,6 +219,7 @@ const toggleDisplays = () => {
         "display-div-button-color"
       );
       deselectDisplay(buttons);
+      closeSpecialties();
     } else if (displays.length !== 0) {
       displays[0].className = "displays-div";
     }
@@ -275,8 +263,11 @@ const displayButtonColor = (event) => {
     arrayButtons.map((button) => {
       if (button.dataset.display === selectedDisplay) {
         deselectDisplay(buttons);
+        closeSpecialties(event);
       } else {
         selectDifferentDisplay(buttons);
+        closeSpecialties(event);
+        showSpecialties(event);
       }
     });
   } else {
@@ -298,7 +289,6 @@ const setButtonsColor = (event) => {
 };
 
 const deselectDisplay = (buttons) => {
-  console.log(state.camera.name, state.display.name);
   buttonsArray = Array.from(buttons);
   buttonsArray.map((button) => {
     button.className = "display-div";
@@ -315,21 +305,19 @@ const selectDifferentDisplay = (buttons) => {
 };
 
 const showSpecialties = (event) => {
-  const currentDisplay = event.currentTarget.innerText;
-  console.log(currentDisplay);
-  const specialtyDivs = document.getElementsByClassName("specialties-div");
-  console.log(specialtyDivs);
-  if (currentDisplay === "4k") {
-    specialtyDivs[0].className = "specialties-show";
-  } else if (currentDisplay === "VisionPro") {
-    specialtyDivs[1].className = "specialties-show";
+  const specialtyDivsShow = document.getElementsByClassName("specialties-show");
+  const currentCameraDisplay = state.camera.name + " " + state.display.name;
+  const specialtyDivs = document.getElementById(currentCameraDisplay);
+  if (state.camera.name !== "" && state.display.name === "") {
+    closeSpecialties();
+  } else if (specialtyDivsShow.length === 0) {
+    closeSpecialties();
+    specialtyDivs.className = "specialties-show";
   }
 };
 
-const closeSpecialties = () => {
+const closeSpecialties = (buttons) => {
   const specialtyDivs = document.getElementsByClassName("specialties-show");
-  console.log(specialtyDivs);
-
   arraySpecialtiesDiv = Array.from(specialtyDivs);
   arraySpecialtiesDiv.map((specialty) => {
     specialty.className = "specialties-div";
