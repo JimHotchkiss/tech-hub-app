@@ -179,6 +179,13 @@ const addingDisplayEventListener = () => {
 };
 
 const setCameraState = (event) => {
+  console.log(
+    event.currentTarget.innerText,
+    "camera:",
+    state.camera,
+    "display",
+    state.display
+  );
   const camera = event.currentTarget.dataset.camera;
   if (state.camera.name === "") {
     state.camera.name = camera;
@@ -198,14 +205,36 @@ const setCameraState = (event) => {
 };
 
 const toggleDisplays = () => {
+  console.log(
+    event.currentTarget.innerText,
+    "camera:",
+    state.camera,
+    "display",
+    state.display
+  );
   const camera = state.camera.name;
+  const display = state.display.name;
   if (camera !== "") {
     // reseting displays-show back to displays-div
     const displays = document.getElementsByClassName("displays-show");
-    if (displays.length !== 0) {
+    if (camera === "1688" && display === "HDTV Wise") {
+      console.log(camera, display);
+      // Close the CCU div
+      const displays = document.getElementsByClassName("displays-show");
+      displays[0].className = "displays-div";
+      // Show the 1688 display div
+      const displaysShow = document.getElementById(camera);
+      displaysShow.className = "displays-show";
+      // Reset display state
+      (state.display.name = ""), (state.display.clicked = false);
+      // Deselect the HDTV Wise button
+      const buttons = document.getElementsByClassName(
+        "display-div-button-color"
+      );
+      deselectDisplay(buttons);
+    } else if (displays.length !== 0) {
       displays[0].className = "displays-div";
     }
-
     const displaysShow = document.getElementById(camera);
     displaysShow.className = "displays-show";
   } else {
@@ -235,18 +264,10 @@ const setDisplayState = (event) => {
 };
 
 const displayButtonColor = (event) => {
-  console.log(
-    event.currentTarget.innerText,
-    "camera:",
-    state.camera,
-    "display",
-    state.display
-  );
   // Get the selected display
   const selectedDisplay = event.currentTarget.innerText;
   // Check if the button is already clicked
   const buttons = document.getElementsByClassName("display-div-button-color");
-  console.log(buttons);
 
   // Check and see if there are display-div-button-color
   if (buttons.length !== 0) {
@@ -277,6 +298,7 @@ const setButtonsColor = (event) => {
 };
 
 const deselectDisplay = (buttons) => {
+  console.log(state.camera.name, state.display.name);
   buttonsArray = Array.from(buttons);
   buttonsArray.map((button) => {
     button.className = "display-div";
