@@ -184,6 +184,7 @@ const setCameraState = (event) => {
     state.camera.name = camera;
     state.camera.clicked = true;
     toggleDisplays(event);
+    // rotateArrow(event);
   } else if (camera === state.camera.name) {
     state.camera.name = "";
     state.camera.clicked = false;
@@ -197,6 +198,17 @@ const setCameraState = (event) => {
     closeSpecialties(event);
     showSpecialties(event);
   }
+};
+
+// Rotate arrow
+const rotateArrow = (event) => {
+  const cameraData = event.currentTarget.dataset.camera;
+  const arrowDiv = document.getElementById(cameraData + " arrow");
+  console.log(arrowDiv);
+  if (state.camera.clicked) {
+    arrowDiv.className = arrowDiv.className + ".open";
+  }
+  // console.log(event.currentTarget.dataset.camera, state.camera);
 };
 
 const toggleDisplays = () => {

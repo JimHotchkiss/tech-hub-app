@@ -145,8 +145,8 @@ body {
 }
 
 .camera-div {
-  content: "";
-  display: block;
+  /* content: ""; */
+  /* display: block; */
   width: 93%;
   border-bottom: 1px solid #ffb600;
   cursor: pointer;
@@ -164,11 +164,11 @@ body {
 
 .arrow-icon-div {
   position: absolute;
-  margin-top: 34px;
+  margin-top: 30px;
   margin-left: 87%;
 }
 
-.arrow-img {
+.arrow-icon-div .arrow-img::after {
   content: "";
   position: absolute;
   transform: translateY(-50%);
@@ -185,9 +185,9 @@ body {
   transition: all 0.4s ease-out;
 }
 
-/* .arrow-img.clicked {
-  transform: translateY(-50%) rotate(180def);
-} */
+.arrow-icon-div.open .arrow-img::after {
+  transform: rotate(180deg);
+}
 
 .displays-div {
   max-height: 0;
