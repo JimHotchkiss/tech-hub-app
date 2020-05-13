@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -169,7 +170,7 @@ body {
 }
 
 .arrow-icon-div .arrow-img::after {
-  content: "";
+  content: " ";
   position: absolute;
   transform: translateY(-50%);
   width: 30px;
@@ -186,7 +187,7 @@ body {
 }
 
 .arrow-icon-div.open .arrow-img::after {
-  transform: rotate(180deg);
+  transform: translateY(-50%) rotate(-180deg);
 }
 
 .displays-div {

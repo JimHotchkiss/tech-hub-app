@@ -184,19 +184,21 @@ const setCameraState = (event) => {
     state.camera.name = camera;
     state.camera.clicked = true;
     toggleDisplays(event);
-    // rotateArrow(event);
+    rotateArrow(event);
   } else if (camera === state.camera.name) {
     state.camera.name = "";
     state.camera.clicked = false;
     clearButtons();
     toggleDisplays(event);
     closeSpecialties();
+    rotateArrow(event);
   } else {
     state.camera.name = "";
     state.camera.name = camera;
     toggleDisplays(event);
     closeSpecialties(event);
     showSpecialties(event);
+    rotateArrow(event);
   }
 };
 
@@ -204,9 +206,15 @@ const setCameraState = (event) => {
 const rotateArrow = (event) => {
   const cameraData = event.currentTarget.dataset.camera;
   const arrowDiv = document.getElementById(cameraData + " arrow");
-  console.log(arrowDiv);
+  // console.log(arrowDiv);
   if (state.camera.clicked) {
-    arrowDiv.className = arrowDiv.className + ".open";
+    arrowDiv.className = arrowDiv.className + " open";
+  } else {
+    const arrowDivOpen = document.getElementsByClassName("arrow-icon-div open");
+    arrowDivOpenArray = Array.from(arrowDivOpen);
+    arrowDivOpenArray.map((div) => {
+      div.className = "arrow-icon-div";
+    });
   }
   // console.log(event.currentTarget.dataset.camera, state.camera);
 };
