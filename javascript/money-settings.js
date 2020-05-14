@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   iconButtons();
   addingDisplayEventListener();
   addingCameraEventListener();
+  addinSpecialtyEventListener();
 });
 
 // Constants
@@ -15,7 +16,7 @@ const camerasDiv = document.getElementById("msa-feature-div");
 const state = {
   camera: { name: "", clicked: false },
   display: { name: "", clicked: false },
-  specialty: "",
+  specialty: { name: "", clicked: false },
 };
 const iconData = [
   {
@@ -179,6 +180,16 @@ const addingDisplayEventListener = () => {
   });
 };
 
+const addinSpecialtyEventListener = () => {
+  specialtyDiv = document.getElementsByClassName("specialty-div");
+  arrayForm = Array.from(specialtyDiv);
+  arrayForm.map((specialty) => {
+    specialty.addEventListener("click", () => {
+      setSpecialtyState(event);
+    });
+  });
+};
+
 const setCameraState = (event) => {
   const camera = event.currentTarget.dataset.camera;
   if (state.camera.name === "") {
@@ -193,6 +204,7 @@ const setCameraState = (event) => {
     toggleDisplays(event);
     closeSpecialties();
     rotateArrow(event);
+    clearSpecialtyButton();
   } else {
     state.camera.name = "";
     state.camera.name = camera;
@@ -200,6 +212,7 @@ const setCameraState = (event) => {
     closeSpecialties(event);
     showSpecialties(event);
     rotateArrow(event);
+    clearSpecialtyButton();
   }
 };
 
@@ -282,6 +295,12 @@ const setDisplayState = (event) => {
   displayButtonColor(event);
 };
 
+const setSpecialtyState = (event) => {
+  state.specialty.name = event.currentTarget.innerText;
+  state.specialty.clicked = true;
+  specialtyButtonColor(event);
+};
+
 const displayButtonColor = (event) => {
   // Get the selected display
   const selectedDisplay = event.currentTarget.innerText;
@@ -310,7 +329,7 @@ const displayButtonColor = (event) => {
 const setButtonsColor = (event) => {
   const currentSelection = event.currentTarget.innerText;
   const findDisplayDivs = document.getElementsByClassName("display-div");
-
+  // This allows the user to change ccu, but keep the display choice
   displayDivsArray = Array.from(findDisplayDivs);
   displayDivsArray.map((displayDiv) => {
     if (displayDiv.dataset.display === currentSelection) {
@@ -344,6 +363,25 @@ const showSpecialties = (event) => {
   } else if (specialtyDivsShow.length === 0) {
     closeSpecialties();
     specialtyDivs.className = "specialties-show";
+  }
+};
+
+const specialtyButtonColor = (event) => {
+  clearSpecialtyButton();
+  const specialtyButtonDiv = event.currentTarget;
+  specialtyButtonDiv.className = "specialty-div-button-color";
+};
+
+const clearSpecialtyButton = (event) => {
+  // Change specialty button colors back
+  const specialtyButtonsClicked = document.getElementsByClassName(
+    "specialty-div-button-color"
+  );
+  if (specialtyButtonsClicked) {
+    formArray = Array.from(specialtyButtonsClicked);
+    formArray.map((div) => {
+      div.className = "specialty-div";
+    });
   }
 };
 
