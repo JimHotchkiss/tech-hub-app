@@ -111,6 +111,7 @@ const navHomeToggle = (event) => {
   clearMSA();
   clearButtons();
   closeSpecialties();
+  closeArrow();
   if (featureNavDiv.style.display === "none") {
     featureNavDiv.style.display = "flex";
     navDiv.style.display = "none";
@@ -219,6 +220,14 @@ const rotateArrow = (event) => {
     arrowDiv.className = arrowDiv.className + " open";
   }
   // console.log(event.currentTarget.dataset.camera, state.camera);
+};
+
+const closeArrow = () => {
+  const arrowDivOpen = document.getElementsByClassName("arrow-icon-div open");
+  arrowDivOpenArray = Array.from(arrowDivOpen);
+  arrowDivOpenArray.map((div) => {
+    div.className = "arrow-icon-div";
+  });
 };
 
 const toggleDisplays = () => {
