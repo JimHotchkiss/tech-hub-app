@@ -192,6 +192,7 @@ const addinSpecialtyEventListener = () => {
 
 const setCameraState = (event) => {
   const camera = event.currentTarget.dataset.camera;
+  console.log(state.camera, state.display);
   if (state.camera.name === "") {
     state.camera.name = camera;
     state.camera.clicked = true;
@@ -214,6 +215,7 @@ const setCameraState = (event) => {
     rotateArrow(event);
     clearSpecialtyButton();
   }
+  console.log(state.camera, state.display);
 };
 
 // Rotate arrow
@@ -367,6 +369,7 @@ const showSpecialties = (event) => {
 };
 
 const specialtyButtonColor = (event) => {
+  console.log(state.camera, state.display, state.specialty);
   clearSpecialtyButton();
   const specialtyButtonDiv = event.currentTarget;
   specialtyButtonDiv.className = "specialty-div-button-color";
