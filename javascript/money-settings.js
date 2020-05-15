@@ -306,7 +306,7 @@ const setSpecialtyState = (event) => {
 const showSettings = (event) => {
   closeDisplaySpecialties();
   openSettingsWindow();
-  ccuSettingsTitle();
+  settingsTitle();
 };
 
 const openSettingsWindow = (event) => {
@@ -315,47 +315,61 @@ const openSettingsWindow = (event) => {
   settingsDiv.className = "settings-show";
 };
 
-const ccuSettingsTitle = (event) => {
+const settingsTitle = (event) => {
   const camera = state.camera.name;
   const settingsShowDiv = document.getElementById("settings" + " " + camera);
-  //
-  const settingsCcuTitle = document.createElement("div");
-  settingsCcuTitle.setAttribute("class", "settings-ccu-title");
-  //
-  const titlePTag = document.createElement("p");
-  titlePTag.setAttribute("class", "ccu-title-tag");
-  titlePTag.innerHTML = "CCU";
-
-  //
-  const ccuTitlePTag = document.createElement("p");
-  ccuTitlePTag.setAttribute("class", "ccu-tag");
-  ccuTitlePTag.innerHTML = camera;
-  //
-  settingsCcuTitle.appendChild(titlePTag);
-  settingsCcuTitle.appendChild(ccuTitlePTag);
-  settingsShowDiv.appendChild(settingsCcuTitle);
-  specialtySettingsTitle();
+  // settings title div
+  const settingsTitle = document.createElement("div");
+  settingsTitle.setAttribute("class", "settings-title");
+  // settings title p-tag
+  const settingsTitlePTag = document.createElement("p");
+  settingsTitlePTag.setAttribute("class", "settings-title-tag");
+  settingsTitlePTag.innerHTML = "Settings";
+  // Put Settings title p-tag into settingsTitle div
+  settingsTitle.appendChild(settingsTitlePTag);
+  // Put settings title div into settingsShow div
+  settingsShowDiv.appendChild(settingsTitle);
+  cameraDisplayTitle(settingsShowDiv);
 };
 
-const specialtySettingsTitle = () => {
-  const camera = state.camera.name;
-  const specialty = state.specialty.name;
-  const settingsShowDiv = document.getElementById("settings" + " " + camera);
-  //
-  const settingsSpecialtyTitle = document.createElement("div");
-  settingsSpecialtyTitle.setAttribute("class", "settings-specialty-title");
-  //
-  const titlePTag = document.createElement("p");
-  titlePTag.setAttribute("class", "specialty-title-tag");
-  titlePTag.innerHTML = "SPECIALTY";
-  //
-  const specialtyTitlePTag = document.createElement("p");
-  specialtyTitlePTag.setAttribute("class", "ccu-tag");
-  specialtyTitlePTag.innerHTML = specialty;
-  //
-  settingsSpecialtyTitle.appendChild(titlePTag);
-  settingsSpecialtyTitle.appendChild(specialtyTitlePTag);
-  settingsShowDiv.appendChild(settingsSpecialtyTitle);
+const cameraDisplayTitle = (settingsShowDiv) => {
+  // camera-display-title div
+  const cameraSpecialtyTitleDiv = document.createElement("div");
+  cameraSpecialtyTitleDiv.setAttribute("class", "camera-specialty-title-div");
+  // Camera title div
+  const cameraTitleDiv = document.createElement("div");
+  cameraTitleDiv.setAttribute("class", "camera-title-div");
+  // camera title p-tag
+  const cameraTag = document.createElement("p");
+  cameraTag.setAttribute("class", "camera-tag");
+  cameraTag.innerHTML = "CCU";
+  //camera name p-tag
+  const cameraNameTag = document.createElement("p");
+  cameraNameTag.setAttribute("class", "camera-name-tag");
+  cameraNameTag.innerHTML = state.camera.name;
+  // Put camera p tags in camera-title-div
+  cameraTitleDiv.appendChild(cameraTag);
+  cameraTitleDiv.appendChild(cameraNameTag);
+  // put camera title div in cameraSpecialtyTitleDiv
+  cameraSpecialtyTitleDiv.appendChild(cameraTitleDiv);
+  // Specialty title div
+  const specialtyTitleDiv = document.createElement("div");
+  specialtyTitleDiv.setAttribute("class", "specialty-title-div");
+  // specialty title p-tag
+  const specialtyTag = document.createElement("p");
+  specialtyTag.setAttribute("class", "specialty-tag");
+  specialtyTag.innerHTML = "SPECIALTY";
+  // Specialty name p-tag
+  const specialtyNameTag = document.createElement("p");
+  specialtyNameTag.setAttribute("class", "specialty-name-tag");
+  specialtyNameTag.innerHTML = state.specialty.name;
+  // put specialty p tags in specialty title div
+  specialtyTitleDiv.appendChild(specialtyTag);
+  specialtyTitleDiv.appendChild(specialtyNameTag);
+  // put specialty titlediv in camera specialty title div
+  cameraSpecialtyTitleDiv.appendChild(specialtyTitleDiv);
+  // put cameraSpecialtyTitleDiv in settings-show div
+  settingsShowDiv.appendChild(cameraSpecialtyTitleDiv);
 };
 
 const closeDisplaySpecialties = (event) => {

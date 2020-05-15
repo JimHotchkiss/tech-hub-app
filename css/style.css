@@ -334,19 +334,68 @@ body {
 
 .settings-show {
   display: flex;
-  height: 100px;
-  width: 100%;
-  margin-top: 5px;
-  background: rgb(0, 251, 255);
-}
-
-.settings-ccu-title {
-  display: flex;
   flex-direction: column;
+  height: auto;
+  width: 100%;
 }
 
-.ccu-title-tag {
-  margin: 18px;
+.camera-specialty-title-div {
+  display: flex;
+  height: 200px;
+  background-color: #262626;
+}
+
+.camera-title-div {
+  margin-left: 32px;
+}
+
+.camera-tag {
+  margin-bottom: 6px;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+}
+
+.camera-name-tag {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
+  color: #fff;
+}
+
+.specialty-tag {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 20px;
+  color: #fff;
+}
+
+.specialty-name-tag {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
+  color: #fff;
+}
+
+.specialty-title-div {
+  margin-left: 170px;
+}
+
+.specialty-tag {
+  margin-bottom: 6px;
+}
+
+.settings-title {
+  margin-top: 18px;
+  margin-left: 16px;
+}
+.settings-title-tag {
+  padding-bottom: 16px;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 24px;
+  color: #fff;
 }
 
 /* iPhone X 375px */
