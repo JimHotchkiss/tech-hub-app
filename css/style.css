@@ -328,6 +328,27 @@ body {
   font-weight: 400;
 }
 
+/* ###############################################################
+                         Settings 
+##################################################################*/
+
+.settings-show {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  margin-top: 5px;
+  background: rgb(0, 251, 255);
+}
+
+.settings-ccu-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.ccu-title-tag {
+  margin: 18px;
+}
+
 /* iPhone X 375px */
 @media only screen and (max-width: 375px) {
   .card-wrapper img {

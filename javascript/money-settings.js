@@ -295,10 +295,78 @@ const setDisplayState = (event) => {
   displayButtonColor(event);
 };
 
+// I'm not going to need specialtyButtoncolor
 const setSpecialtyState = (event) => {
   state.specialty.name = event.currentTarget.innerText;
   state.specialty.clicked = true;
   specialtyButtonColor(event);
+  showSettings();
+};
+
+const showSettings = (event) => {
+  closeDisplaySpecialties();
+  openSettingsWindow();
+  ccuSettingsTitle();
+};
+
+const openSettingsWindow = (event) => {
+  const camera = state.camera.name;
+  const settingsDiv = document.getElementById("settings" + " " + camera);
+  settingsDiv.className = "settings-show";
+};
+
+const ccuSettingsTitle = (event) => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+  //
+  const settingsCcuTitle = document.createElement("div");
+  settingsCcuTitle.setAttribute("class", "settings-ccu-title");
+  //
+  const titlePTag = document.createElement("p");
+  titlePTag.setAttribute("class", "ccu-title-tag");
+  titlePTag.innerHTML = "CCU";
+
+  //
+  const ccuTitlePTag = document.createElement("p");
+  ccuTitlePTag.setAttribute("class", "ccu-tag");
+  ccuTitlePTag.innerHTML = camera;
+  //
+  settingsCcuTitle.appendChild(titlePTag);
+  settingsCcuTitle.appendChild(ccuTitlePTag);
+  settingsShowDiv.appendChild(settingsCcuTitle);
+  specialtySettingsTitle();
+};
+
+const specialtySettingsTitle = () => {
+  const camera = state.camera.name;
+  const specialty = state.specialty.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+  //
+  const settingsSpecialtyTitle = document.createElement("div");
+  settingsSpecialtyTitle.setAttribute("class", "settings-specialty-title");
+  //
+  const titlePTag = document.createElement("p");
+  titlePTag.setAttribute("class", "specialty-title-tag");
+  titlePTag.innerHTML = "SPECIALTY";
+  //
+  const specialtyTitlePTag = document.createElement("p");
+  specialtyTitlePTag.setAttribute("class", "ccu-tag");
+  specialtyTitlePTag.innerHTML = specialty;
+  //
+  settingsSpecialtyTitle.appendChild(titlePTag);
+  settingsSpecialtyTitle.appendChild(specialtyTitlePTag);
+  settingsShowDiv.appendChild(settingsSpecialtyTitle);
+};
+
+const closeDisplaySpecialties = (event) => {
+  const camera = state.camera.name;
+  const cameraDisplay = state.camera.name + " " + state.display.name;
+  console.log(cameraDisplay);
+  const displayDiv = document.getElementById(camera);
+  const specialtiesDiv = document.getElementById(cameraDisplay);
+  displayDiv.className = "displays-div";
+  specialtiesDiv.className = "specialties-div";
+  console.log(state.camera, state.display, state.specialty);
 };
 
 const displayButtonColor = (event) => {
