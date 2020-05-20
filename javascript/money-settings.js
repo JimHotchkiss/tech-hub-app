@@ -25,6 +25,11 @@ const iconData = [
     name: "Money Settings",
   },
   {
+    data: "sports-med",
+    src: "/img/sportsmed.png",
+    name: "Sports Med",
+  },
+  {
     data: "reprocessing",
     src: "/img/reprocessing.png",
     name: "Reprocessing",
@@ -48,11 +53,6 @@ const iconData = [
     data: "color-adjustments",
     src: "/img/adjustment.png",
     name: "Color Adjustments",
-  },
-  {
-    data: "ipad",
-    src: "/img/ipad.png",
-    name: "iPad Assistance",
   },
 ];
 

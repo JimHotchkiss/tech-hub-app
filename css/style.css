@@ -415,7 +415,7 @@ body {
 }
 
 /* 320 Pixels */
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 500px) {
   .nav-title {
     margin-left: 32%;
   }
