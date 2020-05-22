@@ -21,7 +21,7 @@ const state = {
 const iconData = [
   {
     data: "msa",
-    src: "/img/msa2.png",
+    src: "/img/msa-logo-black.png",
     name: "Money Settings",
   },
   {
@@ -89,6 +89,7 @@ const iconButtons = () => {
 
 const navBarFeature = (event) => {
   const text = event.currentTarget.textContent;
+  console.log(text);
   const featureImg = document.getElementById("feature-nav-img");
   if (event.target.attributes.src) {
     featureImg.src = event.target.attributes.src.value;
@@ -205,6 +206,8 @@ const setCameraState = (event) => {
     closeSpecialties();
     rotateArrow(event);
     clearSpecialtyButton();
+    closeSettingsWindow();
+    resetState();
   } else {
     state.camera.name = "";
     state.camera.name = camera;
@@ -213,7 +216,17 @@ const setCameraState = (event) => {
     showSpecialties(event);
     rotateArrow(event);
     clearSpecialtyButton();
+    // closeSettingsWindow();
   }
+};
+
+const resetState = () => {
+  state.camera.name = "";
+  state.camera.clicked = false;
+  state.display.name = "";
+  state.display.clicked = false;
+  state.specialty.name = "";
+  state.specialty.clicked = false;
 };
 
 // Rotate arrow
@@ -271,9 +284,11 @@ const toggleDisplays = () => {
     displaysShow.className = "displays-show";
   } else {
     const displays = document.getElementsByClassName("displays-show");
-    displays[0].className = "displays-div";
-    state.display.name = "";
-    state.display.clicked = false;
+    if (displays.length !== 0) {
+      displays[0].className = "displays-div";
+      state.display.name = "";
+      state.display.clicked = false;
+    }
   }
 };
 
@@ -313,6 +328,15 @@ const openSettingsWindow = (event) => {
   const camera = state.camera.name;
   const settingsDiv = document.getElementById("settings" + " " + camera);
   settingsDiv.className = "settings-show";
+};
+
+const closeSettingsWindow = (event) => {
+  const settingsDiv = document.getElementsByClassName("settings-show");
+  if (settingsDiv.length !== 0) {
+    console.log(settingsDiv[0]);
+    settingsDiv[0].innerHTML = "";
+    settingsDiv[0].className = "";
+  }
 };
 
 const settingsTitle = (event) => {
