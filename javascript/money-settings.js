@@ -18,6 +18,13 @@ const state = {
   display: { name: "", clicked: false },
   specialty: { name: "", clicked: false },
 };
+
+const settings = {
+  ccu: [{ parameter: "data1" }, { parameter2: "dadta2" }],
+  monitor: [{ parameter: "data1" }, { parameter2: "dadta2" }],
+};
+
+console.log(settings.ccu, settings.monitor);
 const iconData = [
   {
     data: "msa",
@@ -36,7 +43,7 @@ const iconData = [
   },
   {
     data: "dhr request",
-    src: "/img/dhr-black.png",
+    src: "/img/dhr2-black.png",
     name: "DHR Request",
   },
   {
@@ -135,6 +142,7 @@ const clearMSA = () => {
     state.display.name = "";
     state.display.clicked = false;
     toggleDisplays();
+    closeSettingsWindow();
   }
 };
 
@@ -216,7 +224,7 @@ const setCameraState = (event) => {
     showSpecialties(event);
     rotateArrow(event);
     clearSpecialtyButton();
-    // closeSettingsWindow();
+    closeSettingsWindow();
   }
 };
 
@@ -257,6 +265,7 @@ const closeArrow = () => {
 };
 
 const toggleDisplays = () => {
+  console.log(state.camera, state.display, state.specialty);
   const camera = state.camera.name;
   const display = state.display.name;
   if (camera !== "") {
@@ -265,7 +274,9 @@ const toggleDisplays = () => {
     if (camera === "1688" && display === "HDTV Wise") {
       // Close the CCU div
       const displays = document.getElementsByClassName("displays-show");
-      displays[0].className = "displays-div";
+      if (displays.length !== 0) {
+        displays[0].className = "displays-div";
+      }
       // Show the 1688 display div
       const displaysShow = document.getElementById(camera);
       displaysShow.className = "displays-show";
