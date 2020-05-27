@@ -20,11 +20,51 @@ const state = {
 };
 
 const settings = {
-  ccu: [{ parameter: "data1" }, { parameter2: "dadta2" }],
-  monitor: [{ parameter: "data1" }, { parameter2: "dadta2" }],
+  ccu: [
+    { "Shutter Mode": "Auto" },
+    { "Shutter Level": "30" },
+    { Area: "0" },
+    { Speed: "9" },
+    { "Photometry Mode": "Photometry" },
+    { "Photometry Peak/Avg": "2" },
+    { "S Gamma": "3" },
+    { "BG Gamma": "4" },
+    { MPED: "0" },
+    { "BG Point": "4" },
+    { "R Knee Slope": "8" },
+    { "R Knee Point": "0" },
+    { Enhance: "23" },
+    { Chroma: "14" },
+    { "B Gain": "0" },
+    { "B Hue": "0" },
+    { "R Gain": "-10" },
+    { "R Hue": "4" },
+    { "ENV Gain Mode": "Auto" },
+    { "ENV Manual Gain": "0" },
+    { "ENV Level": "0" },
+    { "ENV BG Offset": "0" },
+    { "ENV Gamma": "0" },
+    { "ENV Max Gain": "0" },
+  ],
+  monitor: [
+    { Red: "-45" },
+    { Green: "-5" },
+    { Blue: "10" },
+    { Gamma: "S7" },
+    { Enhancement: "Low" },
+    { Brightness: "45" },
+    { Contrast: "50" },
+    { Sharpness: "No Data" },
+  ],
 };
 
-console.log(settings.ccu, settings.monitor);
+const loopThrough = () => {
+  settings.ccu.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      console.log(`${key}: ${value}`);
+    }
+  });
+};
 const iconData = [
   {
     data: "msa",
@@ -96,7 +136,6 @@ const iconButtons = () => {
 
 const navBarFeature = (event) => {
   const text = event.currentTarget.textContent;
-  console.log(text);
   const featureImg = document.getElementById("feature-nav-img");
   if (event.target.attributes.src) {
     featureImg.src = event.target.attributes.src.value;
@@ -326,27 +365,90 @@ const setSpecialtyState = (event) => {
   state.specialty.name = event.currentTarget.innerText;
   state.specialty.clicked = true;
   specialtyButtonColor(event);
-  showSettings();
+  showParametersSettings();
 };
 
-const showSettings = (event) => {
+const showParametersSettings = () => {
   closeDisplaySpecialties();
   openSettingsWindow();
   settingsTitle();
+  showParameters();
 };
 
-const openSettingsWindow = (event) => {
+const settingsDiv = document.createElement("div");
+settingsDiv.setAttribute("class", "settings-parameters-div");
+
+const showParameters = () => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+
+  const itemsDiv = document.createElement("div");
+  itemsDiv.setAttribute("class", "parameters-div");
+  const unorderedList = document.createElement("ul");
+
+  settings.ccu.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      const listItem = document.createElement("li");
+      const parameterDiv = document.createElement("div");
+      parameterDiv.setAttribute("class", "parameter-div");
+      listItem.innerText = key;
+      parameterDiv.appendChild(listItem);
+      unorderedList.appendChild(parameterDiv);
+      itemsDiv.appendChild(unorderedList);
+      settingsDiv.appendChild(itemsDiv);
+      settingsShowDiv.appendChild(settingsDiv);
+    }
+  });
+  showSettings();
+};
+
+const showSettings = () => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+
+  const itemsDiv = document.createElement("div");
+  itemsDiv.setAttribute("class", "settings-div");
+  const unorderedList = document.createElement("ul");
+
+  settings.ccu.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      const listItem = document.createElement("li");
+      const settingDiv = document.createElement("div");
+      settingDiv.setAttribute("class", "setting-div");
+      listItem.innerText = value;
+      settingDiv.appendChild(listItem);
+      unorderedList.appendChild(settingDiv);
+      itemsDiv.appendChild(unorderedList);
+      settingsDiv.appendChild(itemsDiv);
+      settingsShowDiv.appendChild(settingsDiv);
+    }
+  });
+};
+
+const openSettingsWindow = () => {
   const camera = state.camera.name;
   const settingsDiv = document.getElementById("settings" + " " + camera);
   settingsDiv.className = "settings-show";
 };
 
-const closeSettingsWindow = (event) => {
-  const settingsDiv = document.getElementsByClassName("settings-show");
-  if (settingsDiv.length !== 0) {
-    console.log(settingsDiv[0]);
-    settingsDiv[0].innerHTML = "";
-    settingsDiv[0].className = "";
+const closeSettingsWindow = () => {
+  const settingsShowDiv = document.getElementsByClassName("settings-show");
+  const settingsParametersDiv = document.getElementsByClassName(
+    "settings-parameters-div"
+  );
+  console.log(settingsParametersDiv);
+
+  if (settingsShowDiv.length !== 0 && settingsParametersDiv.length !== 0) {
+    ////////////////////////// ****************************
+    /////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////////
+
+    /////////////////////////////////////////////////////////
+
+    settingsParametersDiv[0].innerHTML = "";
+    settingsShowDiv[0].innerHTML = "";
+    settingsShowDiv[0].className = "";
   }
 };
 
