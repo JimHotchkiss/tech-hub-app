@@ -68,7 +68,7 @@ const loopThrough = () => {
 const iconData = [
   {
     data: "msa",
-    src: "/img/msa-logo-black.png",
+    src: "/img/ms-blue.png",
     name: "Money Settings",
   },
   {
@@ -371,7 +371,8 @@ const setSpecialtyState = (event) => {
 const showParametersSettings = () => {
   closeDisplaySpecialties();
   openSettingsWindow();
-  settingsTitle();
+  // settingsTitle();
+  cameraDisplayTitle();
   showParameters();
 };
 
@@ -432,44 +433,37 @@ const openSettingsWindow = () => {
 };
 
 const closeSettingsWindow = () => {
-  const settingsShowDiv = document.getElementsByClassName("settings-show");
+  const closeSettingsShowDiv = document.getElementsByClassName("settings-show");
   const settingsParametersDiv = document.getElementsByClassName(
     "settings-parameters-div"
   );
-  console.log(settingsParametersDiv);
-
-  if (settingsShowDiv.length !== 0 && settingsParametersDiv.length !== 0) {
-    ////////////////////////// ****************************
-    /////////////////////////////////////////////////////////
-
-    /////////////////////////////////////////////////////////
-
-    /////////////////////////////////////////////////////////
-
+  if (closeSettingsShowDiv.length !== 0 && settingsParametersDiv.length !== 0) {
     settingsParametersDiv[0].innerHTML = "";
-    settingsShowDiv[0].innerHTML = "";
-    settingsShowDiv[0].className = "";
+    closeSettingsShowDiv[0].innerHTML = "";
+    closeSettingsShowDiv[0].className = "";
   }
 };
 
-const settingsTitle = (event) => {
-  const camera = state.camera.name;
-  const settingsShowDiv = document.getElementById("settings" + " " + camera);
-  // settings title div
-  const settingsTitle = document.createElement("div");
-  settingsTitle.setAttribute("class", "settings-title");
-  // settings title p-tag
-  const settingsTitlePTag = document.createElement("p");
-  settingsTitlePTag.setAttribute("class", "settings-title-tag");
-  settingsTitlePTag.innerHTML = "Settings";
-  // Put Settings title p-tag into settingsTitle div
-  settingsTitle.appendChild(settingsTitlePTag);
-  // Put settings title div into settingsShow div
-  settingsShowDiv.appendChild(settingsTitle);
-  cameraDisplayTitle(settingsShowDiv);
-};
+// const settingsTitle = (event) => {
+//   const camera = state.camera.name;
+//   const settingsShowDiv = document.getElementById("settings" + " " + camera);
+//   // settings title div
+//   const settingsTitle = document.createElement("div");
+//   settingsTitle.setAttribute("class", "settings-title");
+//   // settings title p-tag
+//   const settingsTitlePTag = document.createElement("p");
+//   settingsTitlePTag.setAttribute("class", "settings-title-tag");
+//   settingsTitlePTag.innerHTML = "Settings";
+//   // Put Settings title p-tag into settingsTitle div
+//   settingsTitle.appendChild(settingsTitlePTag);
+//   // Put settings title div into settingsShow div
+//   settingsShowDiv.appendChild(settingsTitle);
+//   cameraDisplayTitle(settingsShowDiv);
+// };
 
 const cameraDisplayTitle = (settingsShowDiv) => {
+  const camera = state.camera.name;
+  const settingsShowTopDiv = document.getElementById("settings" + " " + camera);
   // camera-display-title div
   const cameraSpecialtyTitleDiv = document.createElement("div");
   cameraSpecialtyTitleDiv.setAttribute("class", "camera-specialty-title-div");
@@ -506,7 +500,7 @@ const cameraDisplayTitle = (settingsShowDiv) => {
   // put specialty titlediv in camera specialty title div
   cameraSpecialtyTitleDiv.appendChild(specialtyTitleDiv);
   // put cameraSpecialtyTitleDiv in settings-show div
-  settingsShowDiv.appendChild(cameraSpecialtyTitleDiv);
+  settingsShowTopDiv.appendChild(cameraSpecialtyTitleDiv);
 };
 
 const closeDisplaySpecialties = (event) => {
