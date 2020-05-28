@@ -174,9 +174,20 @@ body {
   cursor: pointer;
 }
 
-.camera-div.settings {
+.camera-div-settings {
   width: 93%;
   cursor: pointer;
+}
+
+.camera-div-settings li {
+  padding-left: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
+  color: #fff;
+  /* color: #414141; */
 }
 
 .camera-div li {

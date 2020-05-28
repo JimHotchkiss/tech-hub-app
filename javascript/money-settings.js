@@ -433,6 +433,11 @@ const openSettingsWindow = () => {
 };
 
 const closeSettingsWindow = () => {
+  const cameraDiv = document.getElementsByClassName("camera-div-settings");
+  if (cameraDiv.length !== 0) {
+    cameraDiv[0].className = "camera-div";
+  }
+
   const closeSettingsShowDiv = document.getElementsByClassName("settings-show");
   const settingsParametersDiv = document.getElementsByClassName(
     "settings-parameters-div"
@@ -461,8 +466,12 @@ const closeSettingsWindow = () => {
 //   cameraDisplayTitle(settingsShowDiv);
 // };
 
-const cameraDisplayTitle = (settingsShowDiv) => {
+const cameraDisplayTitle = () => {
   const camera = state.camera.name;
+  // grab camera-name-div id
+  const cameraIdDiv = document.getElementById("camera-div-" + camera);
+  cameraIdDiv.className = "camera-div-settings";
+  console.log(cameraIdDiv);
   const settingsShowTopDiv = document.getElementById("settings" + " " + camera);
   // camera-display-title div
   const cameraSpecialtyTitleDiv = document.createElement("div");
