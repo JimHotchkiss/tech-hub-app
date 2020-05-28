@@ -408,6 +408,7 @@ body {
 
 .camera-title-div {
   height: 100px;
+  width: 100px;
   margin-left: 32px;
   padding-top: 30px;
   padding-bottom: 20px;
@@ -447,7 +448,7 @@ body {
 }
 
 .specialty-title-div {
-  margin-left: 170px;
+  margin-left: 110px;
   padding-top: 30px;
   padding-bottom: 15px;
 }
@@ -475,23 +476,25 @@ body {
   display: flex;
 }
 
+.display-settings-parameters-div {
+  display: flex;
+}
+
 ul {
   list-style-type: none;
 }
 
 .setting-div {
   height: 70px;
-  width: 183px;
+  width: 184px;
   padding-left: 8px;
   padding-top: 30px;
-  /* background: #fff; */
   background-color: #e8e9ea;
   border-bottom: 1px solid #5da0ee;
 }
 
 .setting-div li {
   font-family: "Roboto";
-  /* color: #707070; */
   color: #1f252f;
 }
 
@@ -513,13 +516,16 @@ ul {
 
 .display-specialty-title-div {
   display: flex;
+  /* background-color: #eaeef2; */
   background-color: #d2d3d5;
 }
 
 .display-title-div {
   height: 100px;
+  width: 100px;
   margin-left: 32px;
   padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 .display-tag {
@@ -528,7 +534,6 @@ ul {
   font-weight: 600;
   font-size: 20px;
   color: #1f252f;
-  /* color: #414141; */
 }
 
 .display-name-tag {
@@ -536,7 +541,6 @@ ul {
   font-weight: 100;
   font-size: 14px;
   color: #1f252f;
-  /* color: #414141; */
 }
 
 /* iPhone X 375px */
