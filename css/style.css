@@ -12,6 +12,12 @@ body {
   background-color: #1f252f;
 }
 
+.container {
+  /* max-width: 414px; */
+  /* margin: 10% auto; */
+  /* padding-bottom: 100px; */
+  /* border: 1px solid #e8e9ea; */
+}
 #nav {
   display: flex;
   height: 75px;
@@ -39,9 +45,10 @@ body {
 }
 
 #menu-icon {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   top: 28px;
-  right: 30px;
+  margin-left: 100px;
   cursor: pointer;
 }
 
@@ -97,9 +104,11 @@ body {
 /* nav-feature-text-div span*/
 
 .nav-home-icon-div {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   top: 28px;
-  right: 23px;
+  left: 50px;
+  /* right: 23px; */
   cursor: pointer;
 }
 
@@ -190,6 +199,10 @@ body {
   /* color: #414141; */
 }
 
+.camera-li-div {
+  width: 200px;
+}
+
 .camera-div li {
   padding-left: 16px;
   padding-top: 20px;
@@ -202,9 +215,12 @@ body {
 }
 
 .arrow-icon-div {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   margin-top: 30px;
-  margin-left: 87%;
+  left: 150px;
+  /* margin-left: 87%; */
+  /* margin-left: 87%; */
 }
 
 .arrow-icon-div .arrow-img::after {

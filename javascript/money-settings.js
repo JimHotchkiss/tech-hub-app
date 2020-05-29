@@ -524,6 +524,15 @@ const openSettingsWindow = () => {
 };
 
 const closeSettingsWindow = () => {
+  console.log(
+    document.getElementsByClassName("display-settings-parameters-div")[0]
+  );
+
+  const displaySettingsParametersDiv = document.getElementsByClassName(
+    "display-settings-parameters-div"
+  )[0];
+
+  displaySettingsParametersDiv.innerHTML = "";
   const cameraDiv = document.getElementsByClassName("camera-div-settings");
   if (cameraDiv.length !== 0) {
     cameraDiv[0].className = "camera-div";
