@@ -9,14 +9,15 @@
 body {
   /* background-color: #262626; */
   /* background-color: #f7f7f7; */
-  background-color: #1f252f;
+  /* background-color: #1f252f; */
+  background-color: #eaeaea;
 }
 
 .container {
-  /* max-width: 414px; */
-  /* margin: 10% auto; */
-  /* padding-bottom: 100px; */
-  /* border: 1px solid #e8e9ea; */
+  max-width: 414px;
+  margin: 0% auto;
+  padding-bottom: 300px;
+  background-color: #1f252f;
 }
 #nav {
   display: flex;
@@ -45,7 +46,6 @@ body {
 }
 
 #menu-icon {
-  /* position: absolute; */
   position: relative;
   top: 28px;
   margin-left: 100px;
@@ -101,14 +101,10 @@ body {
   cursor: pointer;
 }
 
-/* nav-feature-text-div span*/
-
 .nav-home-icon-div {
-  /* position: absolute; */
   position: relative;
   top: 28px;
   left: 50px;
-  /* right: 23px; */
   cursor: pointer;
 }
 
@@ -125,7 +121,7 @@ body {
 }
 
 .card-wrapper img {
-  width: 30px;
+  width: 50px;
 }
 
 .card-wrapper {
@@ -215,12 +211,9 @@ body {
 }
 
 .arrow-icon-div {
-  /* position: absolute; */
   position: relative;
   margin-top: 30px;
   left: 150px;
-  /* margin-left: 87%; */
-  /* margin-left: 87%; */
 }
 
 .arrow-icon-div .arrow-img::after {
@@ -325,6 +318,10 @@ body {
   font-size: 14px;
   /* color: #262626; */
   color: #fff;
+}
+
+.display-li:hover {
+  color: #414141;
 }
 
 .specialties-div {
@@ -559,49 +556,60 @@ ul {
   color: #1f252f;
 }
 
-/* iPhone X 375px */
-@media only screen and (max-width: 375px) {
-  .card-wrapper img {
-    width: 65px;
-  }
-  .nav-title {
-    margin-left: 37%;
-  }
-}
-
-/* 360 Pixels */
-@media only screen and (max-width: 360px) {
-  .nav-title {
-    margin-left: 32%;
-  }
-}
-
 /* 320 Pixels */
-@media only screen and (max-width: 500px) {
-  .nav-title {
-    margin-left: 32%;
-  }
-  .card-wrapper img {
-    width: 65px;
-  }
-}
-
-/* 411 Pixels */
-@media only screen and (max-width: 411px) {
-  .nav-title {
-    margin-left: 35%;
-  }
-  .card-wrapper img {
-    width: 65px;
+@media only screen and (max-width: 320px) {
+  .arrow-icon-div {
+    position: relative;
+    margin-top: 30px;
+    left: 75px;
   }
 }
 
-/* iPhone 6/7 414px*/
-@media only screen and (max-width: 414px) {
-  .nav-title {
-    margin-left: 40%;
+/*  Pixels */
+@media only screen and (max-width: 320px) {
+  .container {
+    max-width: 320px;
+    margin: 0% auto;
+    padding-bottom: 300px;
+    background-color: #1f252f;
   }
-  .card-wrapper img {
-    width: 65px;
+
+  #nav-title {
+    margin-left: 110px;
+  }
+
+  #menu-icon {
+    position: relative;
+    top: 28px;
+    margin-left: 50px;
+    cursor: pointer;
+  }
+
+  .nav-feature-text-div {
+    margin-left: 65px;
+  }
+
+  .nav-feature-text-div p {
+    font-size: 20px;
+  }
+
+  .nav-home-icon-div {
+    position: relative;
+    left: 30px;
+  }
+
+  .specialty-div {
+    width: 38%;
+  }
+  .specialty-title-div {
+    margin-left: 60px;
+  }
+
+  .parameter-div {
+    width: 185px;
+  }
+
+  .setting-div {
+    width: 135px;
   }
 }

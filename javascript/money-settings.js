@@ -175,13 +175,17 @@ const navHomeToggle = (event) => {
 };
 
 const clearMSA = () => {
+  if (state.specialty.name !== "") {
+    state.specialty.name = "";
+    state.specialty.clicked = false;
+    closeSettingsWindow();
+  }
   if (state.camera.name !== "") {
     state.camera.name = "";
     state.camera.clicked = false;
     state.display.name = "";
     state.display.clicked = false;
     toggleDisplays();
-    closeSettingsWindow();
   }
 };
 
@@ -526,15 +530,14 @@ const openSettingsWindow = () => {
 };
 
 const closeSettingsWindow = () => {
-  console.log(
-    document.getElementsByClassName("display-settings-parameters-div")[0]
-  );
+  console.log(state.camera, state.display, state.specialty);
+  if (state.specialty.name !== "") {
+    const displaySettingsParametersDiv = document.getElementsByClassName(
+      "display-settings-parameters-div"
+    )[0];
+    displaySettingsParametersDiv.innerHTML = "";
+  }
 
-  const displaySettingsParametersDiv = document.getElementsByClassName(
-    "display-settings-parameters-div"
-  )[0];
-
-  displaySettingsParametersDiv.innerHTML = "";
   const cameraDiv = document.getElementsByClassName("camera-div-settings");
   if (cameraDiv.length !== 0) {
     cameraDiv[0].className = "camera-div";
