@@ -18,11 +18,63 @@ const state = {
   display: { name: "", clicked: false },
   specialty: { name: "", clicked: false },
 };
+
+const settings = {
+  ccu: [
+    { "Shutter Mode": "Auto" },
+    { "Shutter Level": "30" },
+    { Area: "0" },
+    { Speed: "9" },
+    { "Photometry Mode": "Photometry" },
+    { "Photometry Peak/Avg": "2" },
+    { "S Gamma": "3" },
+    { "BG Gamma": "4" },
+    { MPED: "0" },
+    { "BG Point": "4" },
+    { "R Knee Slope": "8" },
+    { "R Knee Point": "0" },
+    { Enhance: "23" },
+    { Chroma: "14" },
+    { "B Gain": "0" },
+    { "B Hue": "0" },
+    { "R Gain": "-10" },
+    { "R Hue": "4" },
+    { "ENV Gain Mode": "Auto" },
+    { "ENV Manual Gain": "0" },
+    { "ENV Level": "0" },
+    { "ENV BG Offset": "0" },
+    { "ENV Gamma": "0" },
+    { "ENV Max Gain": "0" },
+  ],
+  monitor: [
+    { Red: "-45" },
+    { Green: "-5" },
+    { Blue: "10" },
+    { Gamma: "S7" },
+    { Enhancement: "Low" },
+    { Brightness: "45" },
+    { Contrast: "50" },
+    { Sharpness: "No Data" },
+  ],
+};
+
+const loopThrough = () => {
+  settings.ccu.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      console.log(`${key}: ${value}`);
+    }
+  });
+};
 const iconData = [
   {
     data: "msa",
-    src: "/img/msa2.png",
+    src: "/img/ms-blue.png",
     name: "Money Settings",
+  },
+  {
+    data: "sports-med",
+    src: "/img/sportsmed.png",
+    name: "Sports Med",
   },
   {
     data: "reprocessing",
@@ -31,7 +83,7 @@ const iconData = [
   },
   {
     data: "dhr request",
-    src: "/img/dhr.png",
+    src: "/img/dhr2-black.png",
     name: "DHR Request",
   },
   {
@@ -48,11 +100,6 @@ const iconData = [
     data: "color-adjustments",
     src: "/img/adjustment.png",
     name: "Color Adjustments",
-  },
-  {
-    data: "ipad",
-    src: "/img/ipad.png",
-    name: "iPad Assistance",
   },
 ];
 
@@ -134,6 +181,7 @@ const clearMSA = () => {
     state.display.name = "";
     state.display.clicked = false;
     toggleDisplays();
+    closeSettingsWindow();
   }
 };
 
@@ -206,6 +254,8 @@ const setCameraState = (event) => {
     closeSpecialties();
     rotateArrow(event);
     clearSpecialtyButton();
+    closeSettingsWindow();
+    resetState();
   } else {
     state.camera.name = "";
     state.camera.name = camera;
@@ -214,8 +264,18 @@ const setCameraState = (event) => {
     showSpecialties(event);
     rotateArrow(event);
     clearSpecialtyButton();
+    closeSettingsWindow();
   }
   console.log(state.camera, state.display);
+};
+
+const resetState = () => {
+  state.camera.name = "";
+  state.camera.clicked = false;
+  state.display.name = "";
+  state.display.clicked = false;
+  state.specialty.name = "";
+  state.specialty.clicked = false;
 };
 
 // Rotate arrow
@@ -246,6 +306,7 @@ const closeArrow = () => {
 };
 
 const toggleDisplays = () => {
+  console.log(state.camera, state.display, state.specialty);
   const camera = state.camera.name;
   const display = state.display.name;
   if (camera !== "") {
@@ -254,7 +315,9 @@ const toggleDisplays = () => {
     if (camera === "1688" && display === "HDTV Wise") {
       // Close the CCU div
       const displays = document.getElementsByClassName("displays-show");
-      displays[0].className = "displays-div";
+      if (displays.length !== 0) {
+        displays[0].className = "displays-div";
+      }
       // Show the 1688 display div
       const displaysShow = document.getElementById(camera);
       displaysShow.className = "displays-show";
@@ -273,9 +336,11 @@ const toggleDisplays = () => {
     displaysShow.className = "displays-show";
   } else {
     const displays = document.getElementsByClassName("displays-show");
-    displays[0].className = "displays-div";
-    state.display.name = "";
-    state.display.clicked = false;
+    if (displays.length !== 0) {
+      displays[0].className = "displays-div";
+      state.display.name = "";
+      state.display.clicked = false;
+    }
   }
 };
 
@@ -297,10 +362,249 @@ const setDisplayState = (event) => {
   displayButtonColor(event);
 };
 
+// I'm not going to need specialtyButtoncolor
 const setSpecialtyState = (event) => {
   state.specialty.name = event.currentTarget.innerText;
   state.specialty.clicked = true;
   specialtyButtonColor(event);
+  showParametersSettings();
+};
+
+const showParametersSettings = () => {
+  closeDisplaySpecialties();
+  openSettingsWindow();
+  cameraDisplayTitle();
+  showParameters();
+};
+
+const settingsDiv = document.createElement("div");
+settingsDiv.setAttribute("class", "settings-parameters-div");
+
+const showParameters = () => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+
+  const itemsDiv = document.createElement("div");
+  itemsDiv.setAttribute("class", "parameters-div");
+  const unorderedList = document.createElement("ul");
+
+  settings.ccu.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      const listItem = document.createElement("li");
+      const parameterDiv = document.createElement("div");
+      parameterDiv.setAttribute("class", "parameter-div");
+      listItem.innerText = key;
+      parameterDiv.appendChild(listItem);
+      unorderedList.appendChild(parameterDiv);
+      itemsDiv.appendChild(unorderedList);
+      settingsDiv.appendChild(itemsDiv);
+      settingsShowDiv.appendChild(settingsDiv);
+    }
+  });
+  showSettings();
+};
+
+const showSettings = () => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+
+  const itemsDiv = document.createElement("div");
+  itemsDiv.setAttribute("class", "settings-div");
+  const unorderedList = document.createElement("ul");
+
+  settings.ccu.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      const listItem = document.createElement("li");
+      const settingDiv = document.createElement("div");
+      settingDiv.setAttribute("class", "setting-div");
+      listItem.innerText = value;
+      settingDiv.appendChild(listItem);
+      unorderedList.appendChild(settingDiv);
+      itemsDiv.appendChild(unorderedList);
+      settingsDiv.appendChild(itemsDiv);
+      settingsShowDiv.appendChild(settingsDiv);
+    }
+  });
+  displaySettingsTitle(settingsShowDiv, camera);
+};
+
+const displaySettingsTitle = () => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+  // create divs
+  const displaySpecialtyTitleDiv = document.createElement("div");
+  displaySpecialtyTitleDiv.setAttribute("class", "display-specialty-title-div");
+  // Camera title div
+  const displayTitleDiv = document.createElement("div");
+  displayTitleDiv.setAttribute("class", "display-title-div");
+  // camera title p-tag
+  const displayTag = document.createElement("p");
+  displayTag.setAttribute("class", "display-tag");
+  displayTag.innerHTML = "DISPLAY";
+  //camera name p-tag
+  const displayNameTag = document.createElement("p");
+  displayNameTag.setAttribute("class", "display-name-tag");
+  displayNameTag.innerHTML = state.display.name;
+  // Put camera p tags in camera-title-div
+  displayTitleDiv.appendChild(displayTag);
+  displayTitleDiv.appendChild(displayNameTag);
+  // put camera title div in cameraSpecialtyTitleDiv
+  displaySpecialtyTitleDiv.appendChild(displayTitleDiv);
+  // Specialty title div
+  const specialtyTitleDiv = document.createElement("div");
+  specialtyTitleDiv.setAttribute("class", "specialty-title-div");
+  // specialty title p-tag
+  const specialtyTag = document.createElement("p");
+  specialtyTag.setAttribute("class", "specialty-tag");
+  specialtyTag.innerHTML = "SPECIALTY";
+  // Specialty name p-tag
+  const specialtyNameTag = document.createElement("p");
+  specialtyNameTag.setAttribute("class", "specialty-name-tag");
+  specialtyNameTag.innerHTML = state.specialty.name;
+  // put specialty p tags in specialty title div
+  specialtyTitleDiv.appendChild(specialtyTag);
+  specialtyTitleDiv.appendChild(specialtyNameTag);
+  // put specialty titlediv in camera specialty title div
+  displaySpecialtyTitleDiv.appendChild(specialtyTitleDiv);
+  // put cameraSpecialtyTitleDiv in settings-show div
+  settingsShowDiv.appendChild(displaySpecialtyTitleDiv);
+  showDisplayParameters();
+};
+
+const displaySettingsDiv = document.createElement("div");
+displaySettingsDiv.setAttribute("class", "display-settings-parameters-div");
+
+const showDisplayParameters = () => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+
+  const itemsDiv = document.createElement("div");
+  itemsDiv.setAttribute("class", "parameters-div");
+  const unorderedList = document.createElement("ul");
+
+  settings.monitor.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      const listItem = document.createElement("li");
+      const parameterDiv = document.createElement("div");
+      parameterDiv.setAttribute("class", "parameter-div");
+      listItem.innerText = key;
+      parameterDiv.appendChild(listItem);
+      unorderedList.appendChild(parameterDiv);
+      displaySettingsDiv.appendChild(unorderedList);
+      settingsShowDiv.appendChild(displaySettingsDiv);
+    }
+  });
+  showDisplaySettings();
+};
+
+const showDisplaySettings = () => {
+  const camera = state.camera.name;
+  const settingsShowDiv = document.getElementById("settings" + " " + camera);
+
+  const itemsDiv = document.createElement("div");
+  itemsDiv.setAttribute("class", "settings-div");
+  const unorderedList = document.createElement("ul");
+
+  settings.monitor.forEach((item) => {
+    for (let [key, value] of Object.entries(item)) {
+      const listItem = document.createElement("li");
+      const settingDiv = document.createElement("div");
+      settingDiv.setAttribute("class", "setting-div");
+      listItem.innerText = value;
+      settingDiv.appendChild(listItem);
+      unorderedList.appendChild(settingDiv);
+      displaySettingsDiv.appendChild(unorderedList);
+      settingsShowDiv.appendChild(displaySettingsDiv);
+    }
+  });
+};
+
+const openSettingsWindow = () => {
+  const camera = state.camera.name;
+  const settingsDiv = document.getElementById("settings" + " " + camera);
+  settingsDiv.className = "settings-show";
+};
+
+const closeSettingsWindow = () => {
+  console.log(
+    document.getElementsByClassName("display-settings-parameters-div")[0]
+  );
+
+  const displaySettingsParametersDiv = document.getElementsByClassName(
+    "display-settings-parameters-div"
+  )[0];
+
+  displaySettingsParametersDiv.innerHTML = "";
+  const cameraDiv = document.getElementsByClassName("camera-div-settings");
+  if (cameraDiv.length !== 0) {
+    cameraDiv[0].className = "camera-div";
+  }
+
+  const closeSettingsShowDiv = document.getElementsByClassName("settings-show");
+  const settingsParametersDiv = document.getElementsByClassName(
+    "settings-parameters-div"
+  );
+  if (closeSettingsShowDiv.length !== 0 && settingsParametersDiv.length !== 0) {
+    settingsParametersDiv[0].innerHTML = "";
+    closeSettingsShowDiv[0].innerHTML = "";
+    closeSettingsShowDiv[0].className = "";
+  }
+};
+
+const cameraDisplayTitle = () => {
+  const camera = state.camera.name;
+  // grab camera-name-div id
+  const cameraIdDiv = document.getElementById("camera-div-" + camera);
+  cameraIdDiv.className = "camera-div-settings";
+  const settingsShowTopDiv = document.getElementById("settings" + " " + camera);
+  // camera-display-title div
+  const cameraSpecialtyTitleDiv = document.createElement("div");
+  cameraSpecialtyTitleDiv.setAttribute("class", "camera-specialty-title-div");
+  // Camera title div
+  const cameraTitleDiv = document.createElement("div");
+  cameraTitleDiv.setAttribute("class", "camera-title-div");
+  // camera title p-tag
+  const cameraTag = document.createElement("p");
+  cameraTag.setAttribute("class", "camera-tag");
+  cameraTag.innerHTML = "CCU";
+  //camera name p-tag
+  const cameraNameTag = document.createElement("p");
+  cameraNameTag.setAttribute("class", "camera-name-tag");
+  cameraNameTag.innerHTML = state.camera.name;
+  // Put camera p tags in camera-title-div
+  cameraTitleDiv.appendChild(cameraTag);
+  cameraTitleDiv.appendChild(cameraNameTag);
+  // put camera title div in cameraSpecialtyTitleDiv
+  cameraSpecialtyTitleDiv.appendChild(cameraTitleDiv);
+  // Specialty title div
+  const specialtyTitleDiv = document.createElement("div");
+  specialtyTitleDiv.setAttribute("class", "specialty-title-div");
+  // specialty title p-tag
+  const specialtyTag = document.createElement("p");
+  specialtyTag.setAttribute("class", "specialty-tag");
+  specialtyTag.innerHTML = "SPECIALTY";
+  // Specialty name p-tag
+  const specialtyNameTag = document.createElement("p");
+  specialtyNameTag.setAttribute("class", "specialty-name-tag");
+  specialtyNameTag.innerHTML = state.specialty.name;
+  // put specialty p tags in specialty title div
+  specialtyTitleDiv.appendChild(specialtyTag);
+  specialtyTitleDiv.appendChild(specialtyNameTag);
+  // put specialty titlediv in camera specialty title div
+  cameraSpecialtyTitleDiv.appendChild(specialtyTitleDiv);
+  // put cameraSpecialtyTitleDiv in settings-show div
+  settingsShowTopDiv.appendChild(cameraSpecialtyTitleDiv);
+};
+
+const closeDisplaySpecialties = (event) => {
+  const camera = state.camera.name;
+  const cameraDisplay = state.camera.name + " " + state.display.name;
+  console.log(cameraDisplay);
+  const displayDiv = document.getElementById(camera);
+  const specialtiesDiv = document.getElementById(cameraDisplay);
+  displayDiv.className = "displays-div";
+  specialtiesDiv.className = "specialties-div";
+  console.log(state.camera, state.display, state.specialty);
 };
 
 const displayButtonColor = (event) => {

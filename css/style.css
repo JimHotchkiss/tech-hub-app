@@ -1,3 +1,5 @@
+/* possible color palettes black:#1f252f, blue: #5da0ee */
+
 * {
   padding: 0;
   margin: 0;
@@ -5,14 +7,23 @@
 }
 
 body {
-  background-color: #262626;
+  /* background-color: #262626; */
+  /* background-color: #f7f7f7; */
+  background-color: #1f252f;
 }
 
+.container {
+  /* max-width: 414px; */
+  /* margin: 10% auto; */
+  /* padding-bottom: 100px; */
+  /* border: 1px solid #e8e9ea; */
+}
 #nav {
   display: flex;
   height: 75px;
   width: 100%;
-  border-bottom: 3px solid #ffb600;
+  /* border-bottom: 3px solid #414141; */
+  border-bottom: 3px solid #5da0ee;
 }
 
 #nav-title {
@@ -24,23 +35,29 @@ body {
   font-family: Roboto;
   font-size: 24px;
   color: #fff;
+  /* color: #414141; */
 }
 
 .title-span {
-  color: #ffb600;
+  /* color: #ffb600; */
+  color: #5da0ee;
+  /* color: #2b72cc; */
 }
 
 #menu-icon {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   top: 28px;
-  right: 30px;
+  margin-left: 100px;
   cursor: pointer;
 }
 
 .menu-bar-top {
   width: 35px;
   height: 3px;
-  background-color: #ffb600;
+  background-color: #5da0ee;
+  /* background-color: #ffb600; */
+  /* background-color: #414141; */
   margin-bottom: 6px;
 }
 
@@ -48,14 +65,18 @@ body {
 .menu-bar-bottom {
   width: 35px;
   height: 3px;
-  background-color: #ffb600;
+  background-color: #5da0ee;
+  /* background-color: #ffb600; */
+  /* background-color: #414141; */
   margin-top: 6px;
 }
 
 #feature-nav-div {
   height: 75px;
   width: 100%;
-  border-bottom: 3px solid #ffb600;
+  /* border-bottom: 3px solid #ffb600; */
+  /* border-bottom: 3px solid #414141; */
+  border-bottom: 3px solid #5da0ee;
 }
 
 #feature-nav-img {
@@ -71,16 +92,23 @@ body {
   font-family: Roboto;
   font-weight: 400;
   font-size: 24px;
-  color: #ffb600;
+  color: #5da0ee;
+  /* color: #ffb600; */
+  /* color: #2b72cc; */
+  /* color: #262626; */
   margin-top: 30px;
   margin-left: 90px;
   cursor: pointer;
 }
 
+/* nav-feature-text-div span*/
+
 .nav-home-icon-div {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   top: 28px;
-  right: 23px;
+  left: 50px;
+  /* right: 23px; */
   cursor: pointer;
 }
 
@@ -105,6 +133,7 @@ body {
   font-weight: 100;
   font-size: 13px;
   color: #fff;
+  /* color: #414141; */
   margin-top: 55px;
   text-align: center;
 }
@@ -135,6 +164,7 @@ body {
   font-weight: 600;
   font-size: 24px;
   color: #fff;
+  /* color: #414141; */
 }
 
 .camera-ul {
@@ -146,11 +176,31 @@ body {
 }
 
 .camera-div {
-  /* content: ""; */
-  /* display: block; */
   width: 93%;
-  border-bottom: 1px solid #ffb600;
+  /* border-bottom: 1px solid #ffb600; */
+  /* border-bottom: 1px solid #b2b4ae; */
+  border-bottom: 1px solid #5da0ee;
   cursor: pointer;
+}
+
+.camera-div-settings {
+  width: 93%;
+  cursor: pointer;
+}
+
+.camera-div-settings li {
+  padding-left: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
+  color: #fff;
+  /* color: #414141; */
+}
+
+.camera-li-div {
+  width: 200px;
 }
 
 .camera-div li {
@@ -161,12 +211,16 @@ body {
   font-weight: 100;
   font-size: 14px;
   color: #fff;
+  /* color: #414141; */
 }
 
 .arrow-icon-div {
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   margin-top: 30px;
-  margin-left: 87%;
+  left: 150px;
+  /* margin-left: 87%; */
+  /* margin-left: 87%; */
 }
 
 .arrow-icon-div .arrow-img::after {
@@ -208,6 +262,7 @@ body {
   font-weight: 600;
   font-size: 24px;
   color: #fff;
+  /* color: #414141; */
 }
 .displays-ul {
   list-style-type: none;
@@ -220,7 +275,10 @@ body {
 .display-div {
   width: 90%;
   height: 30px;
-  background: #ffb600;
+  /* background: #ffb600; */
+  /* background: #eaeaea; */
+  /* background: #1f252f; */
+  background: #5da0ee;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -230,6 +288,9 @@ body {
   width: 90%;
   height: 30px;
   background: #f1f1f1;
+  /* background: #ffb600; */
+  /* background: #5da0ee; */
+
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -242,11 +303,16 @@ body {
   font-family: Roboto;
   font-weight: 300;
   font-size: 14px;
-  color: #262626;
+  /* color: #262626; */
+  /* color: #fff; */
+  color: #1f252f;
 }
 
 .display-div:hover {
-  background: #f1f1f1f1;
+  /* background: #f1f1f1f1; */
+  /* background: #ffb600; */
+  /* background: #1f252f; */
+  background: #f1f1f1;
   font-weight: 400;
 }
 
@@ -257,7 +323,8 @@ body {
   font-family: Roboto;
   font-weight: 300;
   font-size: 14px;
-  color: #262626;
+  /* color: #262626; */
+  color: #fff;
 }
 
 .specialties-div {
@@ -279,6 +346,7 @@ body {
   font-weight: 600;
   font-size: 24px;
   color: #fff;
+  /* color: #414141; */
 }
 
 .specialties-show ul {
@@ -291,7 +359,10 @@ body {
   width: 40%;
   margin: 12px 35px 3px 0px;
   height: 28px;
-  background: #ffb600;
+  /* background: #ffb600; */
+  /* background: #eaeaeaea; */
+  /* background-color: #1f252f; */
+  background-color: #5da0ee;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -301,7 +372,9 @@ body {
   width: 40%;
   margin: 12px 35px 3px 0px;
   height: 28px;
-  background: #f1f1f1f1;
+  /* background: #f1f1f1f1; */
+  /* background: #eaeaeaea; */
+  background: #5da0ee;
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -312,7 +385,8 @@ body {
   font-family: Roboto;
   font-weight: 300;
   font-size: 14px;
-  color: #262626;
+  /* color: #262626; */
+  color: #fff;
 }
 
 .specialty-div li {
@@ -320,12 +394,169 @@ body {
   font-family: Roboto;
   font-weight: 300;
   font-size: 14px;
-  color: #262626;
+  /* color: #262626; */
+  color: #fff;
 }
 
 .specialty-div:hover {
-  background: #f1f1f1f1;
+  /* background: #f1f1f1f1; */
+  /* background: #ffb600; */
+  background: #5da0ee;
   font-weight: 400;
+}
+
+/* ###############################################################
+                         Settings 
+##################################################################*/
+
+.settings-show {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+}
+
+.camera-specialty-title-div {
+  display: flex;
+  /* background-color: #eaeef2; */
+  background-color: #d2d3d5;
+}
+
+.camera-title-div {
+  height: 100px;
+  width: 100px;
+  margin-left: 32px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.camera-tag {
+  margin-bottom: 6px;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 20px;
+  color: #1f252f;
+  /* color: #414141; */
+}
+
+.camera-name-tag {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
+  color: #1f252f;
+  /* color: #414141; */
+}
+
+.specialty-tag {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 20px;
+  color: #1f252f;
+  /* color: #414141; */
+}
+
+.specialty-name-tag {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
+  color: #1f252f;
+  /* color: #414141; */
+}
+
+.specialty-title-div {
+  margin-left: 110px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+.specialty-tag {
+  margin-bottom: 6px;
+}
+
+.settings-title {
+  background-color: #d2d3d5;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 16px;
+}
+.settings-title-tag {
+  padding-bottom: 0px;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 24px;
+  color: #1f252f;
+  /* color: #414141; */
+}
+
+.settings-parameters-div {
+  display: flex;
+}
+
+.display-settings-parameters-div {
+  display: flex;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.setting-div {
+  height: 70px;
+  width: 184px;
+  padding-left: 8px;
+  padding-top: 30px;
+  background-color: #e8e9ea;
+  border-bottom: 1px solid #5da0ee;
+}
+
+.setting-div li {
+  font-family: "Roboto";
+  color: #1f252f;
+}
+
+.parameter-div {
+  padding-left: 32px;
+  padding-top: 30px;
+  /* background: #fff; */
+  background-color: #e8e9ea;
+  height: 70px;
+  width: 230px;
+  border-bottom: 1px solid #5da0ee;
+}
+
+.parameter-div li {
+  font-family: "Roboto";
+  /* color: #707070; */
+  color: #1f252f;
+}
+
+.display-specialty-title-div {
+  display: flex;
+  /* background-color: #eaeef2; */
+  background-color: #d2d3d5;
+}
+
+.display-title-div {
+  height: 100px;
+  width: 100px;
+  margin-left: 32px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+.display-tag {
+  margin-bottom: 6px;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 20px;
+  color: #1f252f;
+}
+
+.display-name-tag {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 14px;
+  color: #1f252f;
 }
 
 /* iPhone X 375px */
@@ -346,7 +577,7 @@ body {
 }
 
 /* 320 Pixels */
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 500px) {
   .nav-title {
     margin-left: 32%;
   }
