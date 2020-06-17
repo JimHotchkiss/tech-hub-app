@@ -83,7 +83,7 @@ const iconData = [
   },
   {
     data: "dhr request",
-    src: "/img/dhr2-black.png",
+    src: "/img/dhr.png",
     name: "DHR Request",
   },
   {
