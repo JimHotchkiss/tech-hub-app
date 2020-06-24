@@ -74,7 +74,7 @@ const iconData = [
   {
     data: "sports-med",
     src: "/img/sportsmed.png",
-    name: "Sports Med",
+    name: "Shaver/Bur RPM",
   },
   {
     data: "reprocessing",
@@ -103,6 +103,39 @@ const iconData = [
   },
 ];
 
+const shaverBurs = [
+  {
+    name: "test",
+    pn: "12345",
+    url: "/img/shaver.png",
+    speed_step_increase: "test step",
+    high_speed_default: "test hight speed default",
+    high_speed_max: "test hight speed max",
+    low_speed_default: "test low speed default",
+    low_speed_max: "test low speed max",
+  },
+  {
+    name: "test",
+    pn: "12345",
+    url: "/img/shaver3.png",
+    speed_step_increase: "test step",
+    high_speed_default: "test hight speed default",
+    high_speed_max: "test hight speed max",
+    low_speed_default: "test low speed default",
+    low_speed_max: "test low speed max",
+  },
+  {
+    name: "test",
+    pn: "12345",
+    url: "/img/shaver2.png",
+    speed_step_increase: "test step",
+    high_speed_default: "test hight speed default",
+    high_speed_max: "test hight speed max",
+    low_speed_default: "test low speed default",
+    low_speed_max: "test low speed max",
+  },
+];
+
 const iconButtons = () => {
   iconData.map((item, index) => {
     const topCardDiv = document.getElementById("card-div");
@@ -110,7 +143,9 @@ const iconButtons = () => {
     cardClassDiv.setAttribute("class", "card-wrapper");
     cardClassDiv.setAttribute("dataset-feature", item.data);
     cardClassDiv.addEventListener("click", (event) => {
+      console.log(event.target);
       navBarFeature(event);
+      // showShaverHomePage(index, event);
     });
     const aTagImgDiv = document.createElement("div");
     aTagImgDiv.setAttribute("class", "icon-div");
@@ -131,6 +166,41 @@ const iconButtons = () => {
     textContainer.appendChild(pTag);
     cardClassDiv.appendChild(textContainer);
     topCardDiv.appendChild(cardClassDiv);
+  });
+};
+
+const shaverContainerDiv = document.getElementById("shaver-container-div");
+
+const showShaverHomePage = () => {
+  if (
+    event.target.parentNode.dataset.feature === "sports-med" &&
+    shaverContainerDiv.style.display === "none"
+  ) {
+    shaverContainerDiv.style.display = "block";
+  } else {
+    shaverContainerDiv.style.display = "none";
+  }
+  clearShaveDom();
+};
+
+const clearShaveDom = () => {
+  const imageDiv = shaverContainerDiv.lastElementChild;
+  console.log(shaverContainerDiv, imageDiv);
+  if (imageDiv !== null) {
+    shaverContainerDiv.removeChild(imageDiv);
+  }
+  showShaverImagesAndData();
+};
+
+const showShaverImagesAndData = () => {
+  shaverBurs.map((shaverBur) => {
+    const shaverImgDiv = document.createElement("div");
+    shaverImgDiv.setAttribute("class", "shaver-image-div");
+    const imgElement = document.createElement("img");
+    imgElement.setAttribute("src", shaverBur.url);
+    imgElement.setAttribute("class", "shaver-img");
+    shaverImgDiv.appendChild(imgElement);
+    shaverContainerDiv.appendChild(shaverImgDiv);
   });
 };
 
@@ -160,6 +230,7 @@ const navHomeToggle = (event) => {
   clearButtons();
   closeSpecialties();
   closeArrow();
+  showShaverHomePage();
   if (featureNavDiv.style.display === "none") {
     featureNavDiv.style.display = "flex";
     navDiv.style.display = "none";
@@ -175,17 +246,13 @@ const navHomeToggle = (event) => {
 };
 
 const clearMSA = () => {
-  if (state.specialty.name !== "") {
-    state.specialty.name = "";
-    state.specialty.clicked = false;
-    closeSettingsWindow();
-  }
   if (state.camera.name !== "") {
     state.camera.name = "";
     state.camera.clicked = false;
     state.display.name = "";
     state.display.clicked = false;
     toggleDisplays();
+    closeSettingsWindow();
   }
 };
 
@@ -530,14 +597,15 @@ const openSettingsWindow = () => {
 };
 
 const closeSettingsWindow = () => {
-  console.log(state.camera, state.display, state.specialty);
-  if (state.specialty.name !== "") {
-    const displaySettingsParametersDiv = document.getElementsByClassName(
-      "display-settings-parameters-div"
-    )[0];
-    displaySettingsParametersDiv.innerHTML = "";
-  }
+  console.log(
+    document.getElementsByClassName("display-settings-parameters-div")[0]
+  );
 
+  const displaySettingsParametersDiv = document.getElementsByClassName(
+    "display-settings-parameters-div"
+  )[0];
+
+  displaySettingsParametersDiv.innerHTML = "";
   const cameraDiv = document.getElementsByClassName("camera-div-settings");
   if (cameraDiv.length !== 0) {
     cameraDiv[0].className = "camera-div";

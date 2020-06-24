@@ -1,0 +1,26 @@
+#shaver-container-div {
+  width: 400px;
+  height: 600px;
+  margin: auto;
+}
+
+.shaver-image-div {
+}
+
+.shaver-img {
+  height: 100px;
+  width: 100px;
+  margin-top: 8px;
+  background-repeat: no-repeat;
+
+  border-radius: 10px;
+  background-size: 100px;
+}
+
+.shaver-img:hover {
+  height: 110px;
+  width: 110px;
+  background-size: 110px;
+  transition: 0.3s;
+  cursor: pointer;
+}
