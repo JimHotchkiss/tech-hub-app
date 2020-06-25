@@ -143,7 +143,6 @@ const iconButtons = () => {
     cardClassDiv.setAttribute("class", "card-wrapper");
     cardClassDiv.setAttribute("dataset-feature", item.data);
     cardClassDiv.addEventListener("click", (event) => {
-      console.log(event.target);
       navBarFeature(event);
       // showShaverHomePage(index, event);
     });
@@ -185,7 +184,6 @@ const showShaverHomePage = () => {
 
 const clearShaveDom = () => {
   const imageDiv = shaverContainerDiv.lastElementChild;
-  console.log(shaverContainerDiv, imageDiv);
   if (imageDiv !== null) {
     console.log("here");
     shaverContainerDiv.removeChild(imageDiv);
@@ -598,15 +596,13 @@ const openSettingsWindow = () => {
 };
 
 const closeSettingsWindow = () => {
-  console.log(
-    document.getElementsByClassName("display-settings-parameters-div")[0]
-  );
-
   const displaySettingsParametersDiv = document.getElementsByClassName(
     "display-settings-parameters-div"
   )[0];
+  if (displaySettingsParametersDiv) {
+    displaySettingsParametersDiv.innerHTML = "";
+  }
 
-  displaySettingsParametersDiv.innerHTML = "";
   const cameraDiv = document.getElementsByClassName("camera-div-settings");
   if (cameraDiv.length !== 0) {
     cameraDiv[0].className = "camera-div";
@@ -739,10 +735,14 @@ const showSpecialties = (event) => {
   if (state.camera.name !== "" && state.display.name === "") {
     closeSpecialties();
   } else if (specialtyDivsShow.length === 0) {
-    closeSpecialties();
+    closeSpecialties;
     specialtyDivs.className = "specialties-show";
   }
 };
+
+// const closeSpecialties = (event) => {
+//   console.log("close specialites");
+// };
 
 const specialtyButtonColor = (event) => {
   console.log(state.camera, state.display, state.specialty);
@@ -765,6 +765,7 @@ const clearSpecialtyButton = (event) => {
 };
 
 const closeSpecialties = (buttons) => {
+  console.log("close specialites");
   const specialtyDivs = document.getElementsByClassName("specialties-show");
   arraySpecialtiesDiv = Array.from(specialtyDivs);
   arraySpecialtiesDiv.map((specialty) => {
