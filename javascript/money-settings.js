@@ -187,6 +187,7 @@ const clearShaveDom = () => {
   const imageDiv = shaverContainerDiv.lastElementChild;
   console.log(shaverContainerDiv, imageDiv);
   if (imageDiv !== null) {
+    console.log("here");
     shaverContainerDiv.removeChild(imageDiv);
   }
   showShaverImagesAndData();
