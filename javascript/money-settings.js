@@ -105,8 +105,8 @@ const iconData = [
 
 const shaverBurs = [
   {
-    name: "test",
-    pn: "12345",
+    name: "test name one",
+    pn: "123-456-789",
     url: "/img/shaver.png",
     speed_step_increase: "test step",
     high_speed_default: "test hight speed default",
@@ -115,8 +115,8 @@ const shaverBurs = [
     low_speed_max: "test low speed max",
   },
   {
-    name: "test",
-    pn: "12345",
+    name: "test name two",
+    pn: "123-456-789",
     url: "/img/shaver3.png",
     speed_step_increase: "test step",
     high_speed_default: "test hight speed default",
@@ -125,8 +125,8 @@ const shaverBurs = [
     low_speed_max: "test low speed max",
   },
   {
-    name: "test",
-    pn: "12345",
+    name: "test name three",
+    pn: "123-456-789",
     url: "/img/shaver2.png",
     speed_step_increase: "test step",
     high_speed_default: "test hight speed default",
@@ -183,23 +183,44 @@ const showShaverHomePage = () => {
 };
 
 const clearShaveDom = () => {
-  const imageDiv = shaverContainerDiv.lastElementChild;
-  if (imageDiv !== null) {
-    console.log("here");
-    shaverContainerDiv.removeChild(imageDiv);
+  if (shaverContainerDiv.firstChild) {
+    while (shaverContainerDiv.firstChild) {
+      shaverContainerDiv.removeChild(shaverContainerDiv.firstChild);
+    }
   }
   showShaverImagesAndData();
 };
 
 const showShaverImagesAndData = () => {
   shaverBurs.map((shaverBur) => {
+    // first main div
+    const shaverImageDataDiv = document.createElement("div");
+    shaverImageDataDiv.setAttribute("class", "shaver-image-data-div");
+    // data div
+    const shaverDataDiv = document.createElement("div");
+    shaverDataDiv.setAttribute("class", "shaver-data-div"); // Shaver data
+    shaverBurs.map((shaverData, index) => {
+      // Shaver data p tags
+      console.log(shaverData, index);
+      const shaverNamePtag = document.createElement("p");
+      shaverNamePtag.setAttribute("class", "shaver-name-text");
+      const shaverPNtag = document.createElement("p");
+      shaverNamePtag.setAttribute("class", "shaver-pn-text");
+      shaverNamePtag.innerText = "Name: " + shaverData.name;
+      shaverPNtag.innerText = "Part Number: " + shaverData.pn;
+      shaverDataDiv.append(shaverNamePtag);
+      shaverDataDiv.append(shaverPNtag);
+    });
+
     const shaverImgDiv = document.createElement("div");
     shaverImgDiv.setAttribute("class", "shaver-image-div");
     const imgElement = document.createElement("img");
     imgElement.setAttribute("src", shaverBur.url);
     imgElement.setAttribute("class", "shaver-img");
     shaverImgDiv.appendChild(imgElement);
-    shaverContainerDiv.appendChild(shaverImgDiv);
+    shaverImageDataDiv.append(shaverImgDiv);
+    shaverImageDataDiv.append(shaverDataDiv);
+    shaverContainerDiv.appendChild(shaverImageDataDiv);
   });
 };
 
@@ -310,7 +331,6 @@ const addinSpecialtyEventListener = () => {
 
 const setCameraState = (event) => {
   const camera = event.currentTarget.dataset.camera;
-  console.log(state.camera, state.display);
   if (state.camera.name === "") {
     state.camera.name = camera;
     state.camera.clicked = true;
@@ -765,7 +785,6 @@ const clearSpecialtyButton = (event) => {
 };
 
 const closeSpecialties = (buttons) => {
-  console.log("close specialites");
   const specialtyDivs = document.getElementsByClassName("specialties-show");
   arraySpecialtiesDiv = Array.from(specialtyDivs);
   arraySpecialtiesDiv.map((specialty) => {
