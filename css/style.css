@@ -14,10 +14,12 @@ body {
 }
 
 .container {
-  max-width: 414px;
+  /* max-width: 414px; */
   margin: 0% auto;
-  padding-bottom: 300px;
-  margin-top: 50px;
+  padding-bottom: 24px;
+  min-height: 100vh;
+  height: auto;
+  /* margin-top: 50px; */
   background-color: #1f252f;
 }
 #nav {
@@ -30,7 +32,7 @@ body {
 
 #nav-title {
   margin-top: 30px;
-  margin-left: 38%;
+  margin-left: 50%;
 }
 
 .nav-feature-text-div {
@@ -53,7 +55,7 @@ body {
 #menu-icon {
   position: relative;
   top: 28px;
-  margin-left: 100px;
+  margin-left: 40%;
   cursor: pointer;
 }
 
@@ -156,7 +158,9 @@ body {
 /* Feature Page */
 
 #msa-feature-div {
-  width: 100%;
+  margin: 0 auto;
+  margin-top: 90px;
+  width: 414px;
 }
 
 .msa-title-div {
@@ -576,50 +580,75 @@ ul {
 }
 
 /*  Pixels */
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 360px) {
   .container {
-    max-width: 320px;
+    max-width: 360px;
     margin: 0% auto;
-    padding-bottom: 300px;
+    margin-top: 0;
+    /* max-height: 200px;
+    height: auto; */
+    /* padding-bottom: 300px; */
     background-color: #1f252f;
   }
 
+  #card-div {
+    max-height: 250px;
+  }
+  #feature-nav-div {
+    width: 100%;
+  }
+
+  #msa-feature-div {
+    max-width: 360px;
+    margin-top: 0;
+  }
+
+  .camera-li-arrow-div {
+    width: 48%;
+  }
+
   #nav-title {
-    margin-left: 110px;
+    margin-left: 140px;
   }
 
   #menu-icon {
     position: relative;
-    top: 28px;
-    margin-left: 50px;
+    top: 32px;
+    margin-left: 70px;
     cursor: pointer;
   }
 
-  .nav-feature-text-div {
-    margin-left: 65px;
-  }
-
-  .nav-feature-text-div p {
-    font-size: 20px;
-  }
-
-  .nav-home-icon-div {
-    position: relative;
-    left: 30px;
-  }
-
   .specialty-div {
-    width: 38%;
+    width: 39%;
   }
-  .specialty-title-div {
-    margin-left: 60px;
+  .specialty-div-button-color {
+    width: 39%;
   }
 
   .parameter-div {
-    width: 185px;
+    width: 100%;
+  }
+
+  .parameter-div li {
+    font-size: 14px;
   }
 
   .setting-div {
-    width: 135px;
+    width: 191px;
+  }
+
+  .setting-div li {
+    font-size: 14px;
+  }
+
+  .display-specialty-title-div {
+    width: 359px;
+  }
+  .display-settings-parameters-div .parameter-div {
+    width: 183px;
+  }
+
+  .display-settings-parameters-div .setting-div {
+    width: 176px;
   }
 }
