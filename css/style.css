@@ -585,10 +585,7 @@ ul {
     max-width: 360px;
     margin: 0% auto;
     margin-top: 0;
-    /* max-height: 200px;
-    height: auto; */
-    /* padding-bottom: 300px; */
-    background-color: #1f252f;
+    /* background-color: #1f252f; */
   }
 
   #card-div {
@@ -621,6 +618,12 @@ ul {
   .specialty-div {
     width: 39%;
   }
+
+  .specialty-title-div {
+    margin-left: 86px;
+    padding-top: 30px;
+    padding-bottom: 15px;
+  }
   .specialty-div-button-color {
     width: 39%;
   }
@@ -631,6 +634,10 @@ ul {
 
   .parameter-div li {
     font-size: 14px;
+  }
+
+  .settings-div li {
+    padding-left: 40px;
   }
 
   .setting-div {
@@ -650,5 +657,9 @@ ul {
 
   .display-settings-parameters-div .setting-div {
     width: 176px;
+  }
+
+  .display-settings-parameters-div .setting-div {
+    padding-left: 30px;
   }
 }

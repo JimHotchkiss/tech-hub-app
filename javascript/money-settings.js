@@ -103,39 +103,6 @@ const iconData = [
   },
 ];
 
-const shaverBurs = [
-  {
-    name: "test name one",
-    pn: "123-456-789",
-    url: "/img/shaver.png",
-    speed_step_increase: "test step",
-    high_speed_default: "test hight speed default",
-    high_speed_max: "test hight speed max",
-    low_speed_default: "test low speed default",
-    low_speed_max: "test low speed max",
-  },
-  {
-    name: "test name two",
-    pn: "123-456-789",
-    url: "/img/shaver3.png",
-    speed_step_increase: "test step",
-    high_speed_default: "test hight speed default",
-    high_speed_max: "test hight speed max",
-    low_speed_default: "test low speed default",
-    low_speed_max: "test low speed max",
-  },
-  {
-    name: "test name three",
-    pn: "123-456-789",
-    url: "/img/shaver2.png",
-    speed_step_increase: "test step",
-    high_speed_default: "test hight speed default",
-    high_speed_max: "test hight speed max",
-    low_speed_default: "test low speed default",
-    low_speed_max: "test low speed max",
-  },
-];
-
 const iconButtons = () => {
   iconData.map((item, index) => {
     const topCardDiv = document.getElementById("card-div");
@@ -143,8 +110,10 @@ const iconButtons = () => {
     cardClassDiv.setAttribute("class", "card-wrapper");
     cardClassDiv.setAttribute("dataset-feature", item.data);
     cardClassDiv.addEventListener("click", (event) => {
+      if (item.data === "sports-med") {
+        showShaverHomePage();
+      }
       navBarFeature(event);
-      // showShaverHomePage(index, event);
     });
     const aTagImgDiv = document.createElement("div");
     aTagImgDiv.setAttribute("class", "icon-div");
@@ -165,62 +134,6 @@ const iconButtons = () => {
     textContainer.appendChild(pTag);
     cardClassDiv.appendChild(textContainer);
     topCardDiv.appendChild(cardClassDiv);
-  });
-};
-
-const shaverContainerDiv = document.getElementById("shaver-container-div");
-
-const showShaverHomePage = () => {
-  if (
-    event.target.parentNode.dataset.feature === "sports-med" &&
-    shaverContainerDiv.style.display === "none"
-  ) {
-    shaverContainerDiv.style.display = "block";
-  } else {
-    shaverContainerDiv.style.display = "none";
-  }
-  clearShaveDom();
-};
-
-const clearShaveDom = () => {
-  if (shaverContainerDiv.firstChild) {
-    while (shaverContainerDiv.firstChild) {
-      shaverContainerDiv.removeChild(shaverContainerDiv.firstChild);
-    }
-  }
-  showShaverImagesAndData();
-};
-
-const showShaverImagesAndData = () => {
-  shaverBurs.map((shaverBur) => {
-    // first main div
-    const shaverImageDataDiv = document.createElement("div");
-    shaverImageDataDiv.setAttribute("class", "shaver-image-data-div");
-    // data div
-    const shaverDataDiv = document.createElement("div");
-    shaverDataDiv.setAttribute("class", "shaver-data-div"); // Shaver data
-    shaverBurs.map((shaverData, index) => {
-      // Shaver data p tags
-      console.log(shaverData, index);
-      const shaverNamePtag = document.createElement("p");
-      shaverNamePtag.setAttribute("class", "shaver-name-text");
-      const shaverPNtag = document.createElement("p");
-      shaverNamePtag.setAttribute("class", "shaver-pn-text");
-      shaverNamePtag.innerText = "Name: " + shaverData.name;
-      shaverPNtag.innerText = "Part Number: " + shaverData.pn;
-      shaverDataDiv.append(shaverNamePtag);
-      shaverDataDiv.append(shaverPNtag);
-    });
-
-    const shaverImgDiv = document.createElement("div");
-    shaverImgDiv.setAttribute("class", "shaver-image-div");
-    const imgElement = document.createElement("img");
-    imgElement.setAttribute("src", shaverBur.url);
-    imgElement.setAttribute("class", "shaver-img");
-    shaverImgDiv.appendChild(imgElement);
-    shaverImageDataDiv.append(shaverImgDiv);
-    shaverImageDataDiv.append(shaverDataDiv);
-    shaverContainerDiv.appendChild(shaverImageDataDiv);
   });
 };
 
@@ -250,7 +163,8 @@ const navHomeToggle = (event) => {
   clearButtons();
   closeSpecialties();
   closeArrow();
-  showShaverHomePage();
+  clearShaveDom();
+  // showShaverHomePage();
   if (featureNavDiv.style.display === "none") {
     featureNavDiv.style.display = "flex";
     navDiv.style.display = "none";
@@ -292,6 +206,7 @@ const toggleFeature = (event) => {
   const camerasDiv = document.getElementById("msa-feature-div");
   const currentFeature = event.currentTarget.childNodes[0].dataset.feature;
   if (currentFeature === "msa") {
+    console.log("msa");
     camerasDiv.style.display = "flex";
     camerasDiv.style.flexDirection = "column";
   } else {
@@ -721,6 +636,7 @@ const displayButtonColor = (event) => {
 };
 
 const setButtonsColor = (event) => {
+  console.log("here", event);
   const currentSelection = event.currentTarget.innerText;
   const findDisplayDivs = document.getElementsByClassName("display-div");
   // This allows the user to change ccu, but keep the display choice
@@ -756,7 +672,9 @@ const showSpecialties = (event) => {
     closeSpecialties();
   } else if (specialtyDivsShow.length === 0) {
     closeSpecialties;
-    specialtyDivs.className = "specialties-show";
+    if (specialtyDivs !== null) {
+      specialtyDivs.className = "specialties-show";
+    }
   }
 };
 

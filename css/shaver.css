@@ -42,3 +42,21 @@
   padding: 8px;
   color: #1f252f;
 }
+
+@media only screen and (max-width: 360px) {
+  .shaver-img {
+    height: 120px;
+    width: 120px;
+    margin-left: 16px;
+    background-size: 120px;
+  }
+
+  .shaver-data-div {
+    height: 120px;
+    width: 190px;
+    /* background-color: #fff;
+    margin-top: 16px;
+    margin-left: 16px;
+    border-radius: 10px; */
+  }
+}
