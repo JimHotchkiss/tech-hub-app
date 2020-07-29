@@ -35,7 +35,6 @@ const shaverContainerDiv = document.getElementById("shaver-container-div");
 const showShaverHomePage = () => {
   console.log(shaverContainerDiv);
   if (shaverContainerDiv.style.display === "none") {
-    console.log(shaverContainerDiv.style.display);
     shaverContainerDiv.style.display = "block";
   } else {
     console.log("else", shaverContainerDiv.style.display);
@@ -49,33 +48,28 @@ const clearShaveDom = () => {
   shaverContainerDiv.style.display = "none";
   if (shaverContainerDiv.firstChild) {
     while (shaverContainerDiv.firstChild) {
-      console.log(shaverContainerDiv.firstChild);
       shaverContainerDiv.removeChild(shaverContainerDiv.firstChild);
     }
   }
 };
 
 const showShaverImagesAndData = () => {
-  console.log("show shaver images and data");
-  shaverBurs.map((shaverBur) => {
+  shaverBurs.forEach((shaverBur) => {
     // first main div
     const shaverImageDataDiv = document.createElement("div");
     shaverImageDataDiv.setAttribute("class", "shaver-image-data-div");
     // data div
     const shaverDataDiv = document.createElement("div");
     shaverDataDiv.setAttribute("class", "shaver-data-div"); // Shaver data
-    shaverBurs.map((shaverData, index) => {
-      // Shaver data p tags
-      const shaverNamePtag = document.createElement("p");
-      shaverNamePtag.setAttribute("class", "shaver-name-text");
-      const shaverPNtag = document.createElement("p");
-      shaverNamePtag.setAttribute("class", "shaver-pn-text");
-      shaverNamePtag.innerText = "Name: " + shaverData.name;
-      shaverPNtag.innerText = "Part Number: " + shaverData.pn;
-      shaverDataDiv.append(shaverNamePtag);
-      shaverDataDiv.append(shaverPNtag);
-    });
-
+    // Shaver data p tags
+    const shaverNamePtag = document.createElement("p");
+    shaverNamePtag.setAttribute("class", "shaver-name-text");
+    const shaverPNtag = document.createElement("p");
+    shaverNamePtag.setAttribute("class", "shaver-pn-text");
+    shaverNamePtag.innerText = "Name: " + shaverBur.name;
+    shaverPNtag.innerText = "Part Number: " + shaverBur.pn;
+    shaverDataDiv.append(shaverNamePtag);
+    shaverDataDiv.append(shaverPNtag);
     const shaverImgDiv = document.createElement("div");
     shaverImgDiv.setAttribute("class", "shaver-image-div");
     const imgElement = document.createElement("img");

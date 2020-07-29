@@ -159,7 +159,7 @@ body {
 
 #msa-feature-div {
   margin: 0 auto;
-  margin-top: 90px;
+  /* margin-top: 90px; */
   width: 414px;
 }
 
@@ -618,12 +618,12 @@ ul {
 } */
 
 /*  Pixels */
-@media only screen and (max-width: 360px) {
-  .container {
+@media only screen and (max-width: 411px) {
+  /* .container {
     max-width: 360px;
     margin: 0% auto;
     margin-top: 0;
-  }
+  } */
 
   #card-div {
     max-height: 250px;
@@ -633,8 +633,8 @@ ul {
   }
 
   #msa-feature-div {
-    max-width: 360px;
-    margin-top: 0;
+    /* max-width: 360px;
+    margin-top: 0; */
   }
 
   .camera-li-arrow-div {

@@ -207,7 +207,6 @@ const toggleFeature = (event) => {
   const camerasDiv = document.getElementById("msa-feature-div");
   const currentFeature = event.currentTarget.childNodes[0].dataset.feature;
   if (currentFeature === "msa") {
-    console.log("msa");
     camerasDiv.style.display = "flex";
     camerasDiv.style.flexDirection = "column";
   } else {
