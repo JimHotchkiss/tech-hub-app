@@ -155,6 +155,7 @@ const navBarFeature = (event) => {
 const navigateHome = (event) => {
   const textPTag = document.getElementById("nav-feature-text-element");
   textPTag.innerHTML = "";
+  clearShaveDom();
   navHomeToggle(event);
 };
 
@@ -163,7 +164,7 @@ const navHomeToggle = (event) => {
   clearButtons();
   closeSpecialties();
   closeArrow();
-  clearShaveDom();
+  // clearShaveDom();
   // showShaverHomePage();
   if (featureNavDiv.style.display === "none") {
     featureNavDiv.style.display = "flex";

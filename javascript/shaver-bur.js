@@ -1,7 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // showShaverHomePage();
-});
-
 const shaverBurs = [
   {
     name: "test name one",
@@ -37,27 +33,30 @@ const shaverBurs = [
 const shaverContainerDiv = document.getElementById("shaver-container-div");
 
 const showShaverHomePage = () => {
-  console.log("here");
+  console.log(shaverContainerDiv);
   if (shaverContainerDiv.style.display === "none") {
+    console.log(shaverContainerDiv.style.display);
     shaverContainerDiv.style.display = "block";
   } else {
+    console.log("else", shaverContainerDiv.style.display);
     shaverContainerDiv.style.display = "none";
   }
-  clearShaveDom();
-};
 
-const clearShaveDom = () => {
-  console.log("clear");
-  if (shaverContainerDiv.firstChild) {
-    console.log("inside shavercontainerdiv");
-    while (shaverContainerDiv.firstChild) {
-      shaverContainerDiv.removeChild(shaverContainerDiv.firstChild);
-    }
-  }
   showShaverImagesAndData();
 };
 
+const clearShaveDom = () => {
+  shaverContainerDiv.style.display = "none";
+  if (shaverContainerDiv.firstChild) {
+    while (shaverContainerDiv.firstChild) {
+      console.log(shaverContainerDiv.firstChild);
+      shaverContainerDiv.removeChild(shaverContainerDiv.firstChild);
+    }
+  }
+};
+
 const showShaverImagesAndData = () => {
+  console.log("show shaver images and data");
   shaverBurs.map((shaverBur) => {
     // first main div
     const shaverImageDataDiv = document.createElement("div");

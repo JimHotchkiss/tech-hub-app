@@ -571,13 +571,51 @@ ul {
 }
 
 /* 320 Pixels */
-@media only screen and (max-width: 320px) {
-  .arrow-icon-div {
-    position: relative;
-    margin-top: 30px;
-    left: 75px;
+/* @media only screen and (max-width: 320px) {
+  .container {
+    max-width: 360px;
+    margin: 0% auto;
+    margin-top: 0;
   }
-}
+  .camera-specialty-title-div {
+    width: 360px;
+  }
+
+  .parameter-div {
+    max-width: 300px;
+  }
+
+  .settings-parameters-div {
+    width: 340px;
+  }
+
+  .setting-div {
+    background: lightgreen;
+    max-width: 500px;
+  }
+
+  .display-specialty-title-div {
+    max-width: 348px;
+  }
+
+  .display-title-div {
+    background: lightcoral;
+  }
+
+  .specialty-title-div {
+    padding-left: 15px;
+    width: 200px;
+  }
+
+  .display-settings-parameters-div .parameter-div {
+    background-color: pink;
+    width: 70px;
+  }
+  .display-settings-parameters-div .setting-div {
+    background-color: lightblue;
+    max-width: 165px;
+  }
+} */
 
 /*  Pixels */
 @media only screen and (max-width: 360px) {
@@ -585,7 +623,6 @@ ul {
     max-width: 360px;
     margin: 0% auto;
     margin-top: 0;
-    /* background-color: #1f252f; */
   }
 
   #card-div {
@@ -663,3 +700,35 @@ ul {
     padding-left: 30px;
   }
 }
+
+/* 411px */
+/* @media only screen and (max-width: 411px) {
+  .container {
+    width: 411px;
+    margin: 0% auto;
+    margin-top: 0;
+  }
+  #nav-title {
+    margin-left: 165px;
+  }
+  #menu-icon {
+    position: relative;
+    top: 32px;
+    margin-left: 75px;
+  }
+  #msa-feature-div {
+    max-width: 411px;
+    margin-top: 0;
+  }
+
+  .display-settings-parameters-div .parameter-div {
+    width: 183px;
+  }
+
+  .display-settings-parameters-div .setting-div {
+    width: 227px;
+  }
+  .setting-div {
+    width: 180px;
+  }
+} */

@@ -43,6 +43,7 @@
   color: #1f252f;
 }
 
+/* 360px */
 @media only screen and (max-width: 360px) {
   .shaver-img {
     height: 120px;
@@ -54,9 +55,5 @@
   .shaver-data-div {
     height: 120px;
     width: 190px;
-    /* background-color: #fff;
-    margin-top: 16px;
-    margin-left: 16px;
-    border-radius: 10px; */
   }
 }
